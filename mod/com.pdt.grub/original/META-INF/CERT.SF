@@ -1,13 +1,13 @@
 Signature-Version: 1.0
 Created-By: Android Gradle 4.1.1
-SHA-256-Digest-Manifest: omYqx8YR5V0r1IHDSGIIWbBcirYbIVG5hIOG1f2JBAw=
+SHA-256-Digest-Manifest: a/SUCf+ih7ovX6F6LADm9fLYUmfzPYjCbnQy9dMbCVs=
 X-Android-APK-Signed: 2
 
 Name: AndroidManifest.xml
 SHA-256-Digest: AUbwppDo4eNhMJhr9sp33NzWWwRhWYKc30koqCM8Vtk=
 
 Name: classes.dex
-SHA-256-Digest: CPwzEn5h/vw31Q0zoOPASPehgTYIRaf+S3NQqR1lvbc=
+SHA-256-Digest: fiXzUmQjvPQ+5yBLpjlajWZIJ0kNdGhD3R4lFx2NCJo=
 
 Name: lib/arm64-v8a/libsandhook.so
 SHA-256-Digest: vbcP4YyCTslvbf6zO/tuX/R5gf1mzQ09KPurjq1+LMo=

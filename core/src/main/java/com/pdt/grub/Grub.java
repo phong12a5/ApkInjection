@@ -1,8 +1,13 @@
 package com.pdt.grub;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.util.Log;
 
+import com.pdt.grub.device.VDeviceInfoHelper;
+import com.pdt.grub.device.VDeviceInfoManager;
+import com.pdt.grub.receiver.CommandReceiver;
 import com.swift.sandhook.xposedcompat.XposedCompat;
 
 import de.robv.android.xposed.XC_MethodHook;
@@ -10,7 +15,9 @@ import de.robv.android.xposed.XposedBridge;
 
 public class Grub {
     private static final String TAG = "[PDT]Grub";
+    private static final CommandReceiver sCommandReceiver = new CommandReceiver();
     public static void initialize(Context context) {
+        Log.i(TAG, "initialize");
         //setup for xposed
         //for xposed compat only(no need xposed comapt new)
         XposedCompat.cacheDir = context.getCacheDir();
@@ -19,10 +26,17 @@ public class Grub {
         XposedCompat.context = context;
         XposedCompat.classLoader = context.getClassLoader();
         XposedCompat.isFirstApplication = true;
+
+        VDeviceInfoManager.get().init(context);
+        registerHostCommand(context);
+        hookTest();
     }
 
     private static void registerHostCommand(Context context) {
-
+        Log.i(TAG, "registerHostCommand");
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(CommandReceiver.COMMAND_STOP_APP);
+        context.registerReceiver(sCommandReceiver, filter);
     }
 
     public static void hookTest() {

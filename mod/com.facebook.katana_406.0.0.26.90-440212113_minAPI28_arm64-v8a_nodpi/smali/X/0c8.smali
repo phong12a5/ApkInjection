@@ -2566,7 +2566,6 @@
     const-string v0, "DelegatingWithSplashApp.attachBaseContext"
 
     invoke-static {p1}, Lcom/pdt/grub/Grub;->initialize(Landroid/content/Context;)V
-    invoke-static {}, Lcom/pdt/grub/Grub;->hookTest()V
 
     .line 1
     .line 2

@@ -6,7 +6,7 @@ Name: AndroidManifest.xml
 SHA-256-Digest: jEjPvd4bORF6iw3V54wkfPX0lHDA0waLD3T/SJBFyKU=
 
 Name: classes.dex
-SHA-256-Digest: 8u+c+BTUHrDJY9qVWlCTtgo0FoAstvTBP+FrJtw6ZdQ=
+SHA-256-Digest: sBO9IlW6pCnqS412tQvj0OMl4Ny09nQiCg0BLsGFfNQ=
 
 Name: lib/arm64-v8a/libsandhook.so
 SHA-256-Digest: GbHThotzCOlmBhEi0SFqeVRKIputc9NaOzTIDQ22/qo=

@@ -6,12 +6,27 @@
 # static fields
 .field private static final TAG:Ljava/lang/String; = "[PDT]Grub"
 
+.field private static final sCommandReceiver:Lcom/pdt/grub/receiver/CommandReceiver;
+
 
 # direct methods
+.method static constructor <clinit>()V
+    .locals 1
+
+    .line 16
+    new-instance v0, Lcom/pdt/grub/receiver/CommandReceiver;
+
+    invoke-direct {v0}, Lcom/pdt/grub/receiver/CommandReceiver;-><init>()V
+
+    sput-object v0, Lcom/pdt/grub/Grub;->sCommandReceiver:Lcom/pdt/grub/receiver/CommandReceiver;
+
+    return-void
+.end method
+
 .method public constructor <init>()V
     .locals 0
 
-    .line 11
+    .line 14
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -23,7 +38,7 @@
     :try_start_0
     const-string v0, "android.os.SystemProperties"
 
-    .line 30
+    .line 45
     invoke-static {v0}, Ljava/lang/Class;->forName(Ljava/lang/String;)Ljava/lang/Class;
 
     move-result-object v0
@@ -43,10 +58,10 @@
     :catch_0
     move-exception v0
 
-    .line 53
+    .line 68
     invoke-virtual {v0}, Ljava/lang/ClassNotFoundException;->printStackTrace()V
 
-    .line 56
+    .line 71
     :goto_0
     const-class v0, Ljava/lang/System;
 
@@ -64,36 +79,77 @@
 .method public static hookTest()V
     .locals 0
 
-    .line 25
+    .line 40
     invoke-static {}, Lcom/pdt/grub/Grub;->changeSysProps()V
 
     return-void
 .end method
 
 .method public static initialize(Landroid/content/Context;)V
-    .locals 1
+    .locals 2
 
-    .line 16
+    const-string v0, "[PDT]Grub"
+
+    const-string v1, "initialize"
+
+    .line 18
+    invoke-static {v0, v1}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 21
     invoke-virtual {p0}, Landroid/content/Context;->getCacheDir()Ljava/io/File;
 
     move-result-object v0
 
     sput-object v0, Lcom/swift/sandhook/xposedcompat/XposedCompat;->cacheDir:Ljava/io/File;
 
-    .line 19
+    .line 24
     sput-object p0, Lcom/swift/sandhook/xposedcompat/XposedCompat;->context:Landroid/content/Context;
 
-    .line 20
+    .line 25
     invoke-virtual {p0}, Landroid/content/Context;->getClassLoader()Ljava/lang/ClassLoader;
 
-    move-result-object p0
+    move-result-object v0
 
-    sput-object p0, Lcom/swift/sandhook/xposedcompat/XposedCompat;->classLoader:Ljava/lang/ClassLoader;
+    sput-object v0, Lcom/swift/sandhook/xposedcompat/XposedCompat;->classLoader:Ljava/lang/ClassLoader;
 
-    const/4 p0, 0x1
+    const/4 v0, 0x1
 
-    .line 21
-    sput-boolean p0, Lcom/swift/sandhook/xposedcompat/XposedCompat;->isFirstApplication:Z
+    .line 26
+    sput-boolean v0, Lcom/swift/sandhook/xposedcompat/XposedCompat;->isFirstApplication:Z
+
+    .line 28
+    invoke-static {p0}, Lcom/pdt/grub/Grub;->registerHostCommand(Landroid/content/Context;)V
+
+    .line 29
+    invoke-static {}, Lcom/pdt/grub/Grub;->hookTest()V
+
+    return-void
+.end method
+
+.method private static registerHostCommand(Landroid/content/Context;)V
+    .locals 2
+
+    const-string v0, "[PDT]Grub"
+
+    const-string v1, "registerHostCommand"
+
+    .line 33
+    invoke-static {v0, v1}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 34
+    new-instance v0, Landroid/content/IntentFilter;
+
+    invoke-direct {v0}, Landroid/content/IntentFilter;-><init>()V
+
+    const-string v1, "cmd_stop_app"
+
+    .line 35
+    invoke-virtual {v0, v1}, Landroid/content/IntentFilter;->addAction(Ljava/lang/String;)V
+
+    .line 36
+    sget-object v1, Lcom/pdt/grub/Grub;->sCommandReceiver:Lcom/pdt/grub/receiver/CommandReceiver;
+
+    invoke-virtual {p0, v1, v0}, Landroid/content/Context;->registerReceiver(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;
 
     return-void
 .end method

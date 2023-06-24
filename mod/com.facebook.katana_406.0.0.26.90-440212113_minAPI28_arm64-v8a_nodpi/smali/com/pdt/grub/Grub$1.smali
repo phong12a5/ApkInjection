@@ -18,7 +18,7 @@
 .method constructor <init>()V
     .locals 0
 
-    .line 30
+    .line 45
     invoke-direct {p0}, Lde/robv/android/xposed/XC_MethodHook;-><init>()V
 
     return-void
@@ -34,10 +34,10 @@
         }
     .end annotation
 
-    .line 33
+    .line 48
     invoke-super {p0, p1}, Lde/robv/android/xposed/XC_MethodHook;->afterHookedMethod(Lde/robv/android/xposed/XC_MethodHook$MethodHookParam;)V
 
-    .line 48
+    .line 63
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
