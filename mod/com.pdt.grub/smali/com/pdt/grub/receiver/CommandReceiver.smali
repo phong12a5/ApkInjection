@@ -77,7 +77,7 @@
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v2, "package: "
+    const-string v2, "Self-stop package: "
 
     invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -100,10 +100,12 @@
 
     if-eqz p1, :cond_1
 
-    const/4 p1, 0x0
-
     .line 21
-    invoke-static {p1}, Ljava/lang/System;->exit(I)V
+    invoke-static {}, Landroid/os/Process;->myPid()I
+
+    move-result p1
+
+    invoke-static {p1}, Landroid/os/Process;->killProcess(I)V
 
     :cond_1
     :goto_0

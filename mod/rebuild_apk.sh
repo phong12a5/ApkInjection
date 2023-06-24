@@ -1,5 +1,16 @@
 #!/bin/bash
 
+echo "clean output"
+
+echo "decomplie com.pdt.grub ..."
+apktool d -r -f -o com.pdt.grub ../app/release/app-release.apk
+
+echo "copy grub smali to facebook smali .."
+cp -rf com.pdt.grub/smali/* $1/smali/
+
+mkdir -p modified_apk
+rm -rf modified_apk/*
+
 echo "rebuild apk ..."
 apktool b -f -o modified_apk/$1.apk $1
 
