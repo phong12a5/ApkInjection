@@ -1,0 +1,47 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    compileSdk 30
+
+    defaultConfig {
+        applicationId "com.pdt.app"
+        minSdk 21
+        targetSdk 29
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
+        }
+    }
+
+    signingConfigs {
+        debug {
+            storeFile file('../keystores/goodfarmer_key.jks')
+            storePassword 'Pdt1794@'
+            keyAlias 'goodfarmer.app'
+            keyPassword 'Pdt1794@'
+        }
+        release {
+            storeFile file('../keystores/goodfarmer_key.jks')
+            storePassword 'Pdt1794@'
+            keyAlias 'goodfarmer.app'
+            keyPassword 'Pdt1794@'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation project(':core')
+}
