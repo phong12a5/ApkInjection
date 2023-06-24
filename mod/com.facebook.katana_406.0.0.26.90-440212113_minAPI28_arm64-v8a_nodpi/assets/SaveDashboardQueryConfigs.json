@@ -1,0 +1,14 @@
+{
+  "$generated": "@generated SignedSource<<9a75b333834a8ce6185c22842e19767e>>",
+  "SaveDashboardSectionalContentRendererQuery": {
+    "id": "8723560777713996",
+    "variables": [
+      "collectionCount",
+      "saveCount",
+      "scale",
+      "notifID",
+      "hoistedItemID",
+      "useCase"
+    ]
+  }
+}

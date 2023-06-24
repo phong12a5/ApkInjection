@@ -1,0 +1,257 @@
+{
+  "cappedScale": ["cappedScale"],
+  "scale": ["scale"],
+  "FBFallbackAttachment_LARGE_HEIGHT":
+    ["floor",
+      ["multiply",
+        ["scale"],
+        180
+      ]
+    ],
+  "FBFallbackAttachment_LARGE_WIDTH":
+    ["floor",
+      ["multiply",
+        ["scale"],
+        ["dimension_width"]
+      ]
+    ],
+  "FBFallbackAttachment_PORTRAIT_HEIGHT":
+  ["floor",
+    ["multiply",
+      ["scale"],
+      180
+    ]
+  ],
+  "FBFallbackAttachment_PORTRAIT_WIDTH":
+    ["floor",
+      ["multiply",
+        ["scale"],
+        120
+      ]
+    ],
+  "FBFallbackAttachment_SMALL_HEIGHT":
+    ["floor",
+      ["multiply",
+        ["scale"],
+        120
+      ]
+    ],
+  "FBFallbackAttachment_SMALL_WIDTH":
+    ["floor",
+      ["multiply",
+        ["scale"],
+        120
+      ]
+    ],
+  "FBPhoto_LEGACY_FULL_HEIGHT":
+    ["floor",
+      ["dimension_height"]
+    ],
+  "FBPhoto_LEGACY_FULL_WIDTH":
+   ["floor",
+     ["dimension_width"]
+   ],
+  "FBPhoto_LEGACY_LARGE_HEIGHT": 200,
+  "FBPhoto_LEGACY_LARGE_WIDTH":
+    ["floor",
+      ["dimension_width"]
+    ],
+  "FBPhoto_LEGACY_MEDIUM_HEIGHT": 120,
+  "FBPhoto_LEGACY_MEDIUM_WIDTH":
+    ["floor",
+      ["divide", ["dimension_width"], 2]
+    ],
+  "FBPhoto_LEGACY_SMALL_HEIGHT": 90,
+  "FBPhoto_LEGACY_SMALL_WIDTH":
+    ["floor",
+      ["divide", ["dimension_width"], 3]
+    ],
+  "FBPhoto_ZOOMED_HEIGHT":
+    ["floor",
+      ["divide", ["dimension_height"], 2]
+    ],
+  "FBPhoto_ZOOMED_WIDTH":
+    ["floor",
+      ["divide", ["dimension_width"], 2]
+    ],
+  "FBStickerAttachment_SIZE":
+    ["floor",
+      ["multiply",
+        ["scale"],
+        60
+      ]
+    ],
+  "FBVideoAttachment_HEIGHT":
+  ["floor",
+    ["multiply",
+      ["scale"],
+      130
+    ]
+  ],
+  "FBVideoAttachment_WIDTH":
+    ["floor",
+      ["multiply",
+        ["scale"],
+        ["dimension_width"]
+      ]
+    ],
+  "FBGroupsDiscover_COVER_PHOTO_SIZE":
+    ["floor",
+      ["multiply",
+        ["scale"],
+        64
+      ]
+    ],
+  "FBGroupsDiscover_MEMBER_IMAGE_SIZE": 24,
+  "MarketplaceBrowseFeedScrollView_INITIAL_SIZE": ["multiply", ["cappedScale"], 40],
+  "MarketplaceBrowseFeedScrollView_SIZE":
+    ["round",
+      ["multiply",
+        ["minus",
+          ["floor", ["divide", ["dimension_width"], 2]],
+          2.5],
+        ["cappedScale"]
+      ]
+    ],
+  "MarketplaceProductImage_LARGE_SIZE": [
+    "round",
+    [
+      "multiply",
+      ["scale"],
+      72
+    ]
+  ],
+  "MarketplaceProductImage_SMALL_SIZE": [
+    "round",
+    [
+      "multiply",
+      ["scale"],
+      52
+    ]
+  ],
+  "MarketplaceExploreView_USE_MODULAR_FEED":["fb_marketplace:use_modular_feed"],
+  "MarketplaceExploreView_SHOULD_USE_COVER_FILL":["fb_marketplace:should_use_cover_fill"],
+  "MarketplaceExploreView_SHOW_PROFILE_PICTURE_ADDON":["fb_marketplace:show_profile_picture_addon"],
+  "MarketplaceExploreView_IMAGE_MEDIA_TYPE":["qe_marketplace_feed_layout:image_media_type"],
+  "MarketplaceExploreView_IMAGE_CONTEXT_FEED":["qe_marketplace_feed_layout:image_context_feed"],
+  "MarketplaceExploreView_UPDATE_I18N_SETTINGS": ["fb_marketplace_prefetch:update_18n_settings_in_feed"],
+  "MarketplaceFeedView_USE_TURBO_FEED":["fb_marketplace_prefetch:use_turbo_feed"],
+  "CommerceNotificationsTray_HAS_NOTIFICATION_UNITS": ["fb_marketplace_prefetch:has_notification_units"],
+  "MarketplaceExploreView_SHOW_RATEBACK_CONTENT":["fb_marketplace:marketplace_ratings_v2"],
+  "Marketplace_SHOW_CROSS_POST_SUGGESTIONS_FROM_GROUPS":["marketplace_seller_config:show_cross_post_suggestions"],
+  "Marketplace_SHOW_DRAFTS_IN_POST_SUGGESTIONS":["marketplace_seller_config:show_drafts"],
+  "MarketplaceBrowseFeedScrollView_DEFAULT_COUNT":["fb_marketplace:initial_fetch"],
+  "MarketplaceStoryFeedScrollView_DEFAULT_COUNT":["fb_marketplace_prefetch:story_feed_initial_fetch_count"],
+  "FBShopsMallFeedScrollView_HEIGHT":
+    ["round",
+      ["multiply",
+        ["minus",
+          ["floor", ["divide", ["dimension_width"], 2]],
+          2.5],
+        ["cappedScale"]
+      ]
+    ],
+  "FBShopsMallFeedScrollView_WIDTH":
+    ["round",
+      ["multiply",
+        ["minus",
+          ["floor", ["divide", ["dimension_width"], 2]],
+          2.5],
+        ["cappedScale"]
+      ]
+    ],
+  "ProfileGemstoneProfile_PHOTO_WIDTH":
+    ["floor",
+      ["multiply",
+        ["scale"],
+        ["dimension_width"]
+      ]
+    ],
+  "ProfileGemstoneProfile_PHOTO_HEIGHT":
+    ["floor",
+      ["multiply",
+        ["multiply",
+          ["scale"],
+          ["dimension_width"]
+        ],
+        1.2
+      ]
+    ],
+  "ProfileGemstoneProfile_FACEPILE_PHOTO_WIDTH":
+    ["floor",
+      ["multiply",
+        ["scale"],
+        32
+      ]
+    ],
+  "ProfileGemstoneProfile_FACEPILE_PHOTO_HEIGHT":
+    ["floor",
+      ["multiply",
+        ["scale"],
+        32
+      ]
+    ],
+  "GemstoneHomeSurface_PROFILE_PICTURE_WIDTH":
+  ["floor",
+    ["multiply",
+      ["scale"],
+      ["dimension_width"]
+    ]
+  ],
+  "GemstoneHomeSurface_PROFILE_PICTURE_HEIGHT":
+    ["floor",
+      ["multiply",
+        ["multiply",
+          ["scale"],
+          ["dimension_width"]
+        ],
+        1.2
+      ]
+    ],
+  "ProfileGemstoneProfile_SHOW_HOBBIES": ["rn_profile_gemstone:enable_hobbies_on_profile"],
+  "ProfileGemstoneProfile_SHOW_MUTUALITIES": true,
+  "ProfileGemstoneProfile_SHOW_STORIES_BUCKET": ["rn_profile_gemstone_discovery_2019_h2:stories_enabled"],
+  "ProfileGemstoneProfile_INTERESTED_PHOTO_WIDTH":
+    ["floor",
+      ["multiply",
+        ["scale"],
+        40
+      ]
+    ],
+  "ProfileGemstoneProfile_INTERESTED_PHOTO_HEIGHT":
+    ["floor",
+      ["multiply",
+        ["scale"],
+        52
+      ]
+    ],
+  "ProfileAbout_SHOULD_DISPLAY_LIFE_EVENTS": ["fb4a_profile_vnext_2020_h2:show_life_events_in_about_page"],
+  "ProfileAbout_SHOW_NEW_APP_SECTIONS": ["rn_profile_about_collections_migration_2022_h1:show_app_sections_only"],
+  "ShopsUIUtils_FEED_IMAGE_WIDTH":
+    ["round",
+      ["minus",
+        ["divide",
+          ["minus", ["dimension_width"], 6],
+          2
+        ],
+        ["divide", 1, ["scale"]]
+      ]
+    ],
+  "GemstoneHomeSurface_INITIAL_QUERY_FETCH_QP": ["dating_home_rn:dh_initial_query_fetch_qp"],
+  "GemstoneHomeSurface_INITIAL_QUERY_SKIP_BADGE_COUNTS": ["dating_home_rn:dh_initial_query_skip_badge_counts"],
+  "GemstoneHomeSurface_HEIGHT_MEASUREMENT_UNIT": ["gemstone_height_measurement_unit"],
+  "GemstoneHomeSurface_SCALE": ["scale"],
+  "GemstoneHomeSurface_SURFACE_NUX_ID": ["gemstone_surface_nux_id"],
+  "MarketplaceExploreView_SURFACE_NUX_ID": ["marketplace_surface_nux_id"],
+  "savedSearchStoryCount": ["fb_marketplace:max_saved_search_stories"],
+  "isExtraDataFetched": ["qe_mp_search_serp_feed:mp_serp_extra_data_fetching"],
+  "enableJobTitlePreferencesInterstitialFragment": ["fb_jobs:enable_job_title_preferences_interstitial"],
+  "enableJobBrowserNotificationsTray": ["fb_jobs:enable_jobs_badge"],
+  "disableSVD": ["marketplace_vertical_svd_deprecation:disable_svd"],
+  "fetchMessageThread": ["qe_mp_search_serp_feed:show_messaged_ui"],
+  "showFreeShipping": ["marketplace_ecomm_verticals:show_free_shipping_string"],
+  "fetchLatitudeAndLongitude": [
+    "qe_mp_search_serp_feed:cut_off_local_picup_metadata_monetizer_item"
+  ],
+  "showShippingSpeed": ["qe_mp_search_serp_feed:show_shipping_speed"]
+}

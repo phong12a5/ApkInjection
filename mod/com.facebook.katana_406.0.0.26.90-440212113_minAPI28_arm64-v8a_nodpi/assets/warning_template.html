@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!-- TODO(T22734369): Should be minified -->
+<html>
+  <head>
+    <title>{{__safe_browsing_title__}}</title>
+    <meta name="viewport"
+          content="initial-scale=1, minimum-scale=1, width=device-width">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="warning.css" media="screen">
+  </head>
+  <body>
+    <div id="safebrowsing-wrapper">
+      <div id="main" {{__safe_browsing_warning_dir__}}>
+        <div>
+          <div id="title">
+            <!-- See the notes in BUCK about how to generate this URL -->
+            <img src="https://lookaside.facebook.com/ras/v2/?id=AQACt6W49HVW" id="caution-icon" {{__safe_browsing_warning_dir__}}>{{__safe_browsing_title__}}
+          </div>
+          <p>{{__safe_browsing_warning__}}
+          </p>
+          <div>
+            <button id="goBackToSafety" class="button_default" {{__safe_browsing_warning_dir__}}>{{__safe_browsing_go_back__}}</button>
+            <span id="toggle_details" onClick="toggleDetails()" {{__safe_browsing_warning_dir__}}>
+              <span id="show_details_text">{{__safe_browsing_show_details__}}</span>
+              <span id="hide_details_text">{{__safe_browsing_hide_details__}}</span>
+              <!-- See the notes in BUCK about how to generate this URL -->
+              <img src="https://lookaside.facebook.com/ras/v2/?id=AQAB-twb5qaR" id="chevron" {{__safe_browsing_warning_dir__}}>
+            </span>
+          </div>
+        </div>
+        <div id="details">
+          <p>{{__safe_browsing_warning_details__}} {{__safe_browsing_learn_more__}}
+          <p>{{__safe_browsing_proceed_to_site__}}
+          <p>{{__safe_browsing_advisory__}}
+        </div>
+      </div>
+    </div>
+    <script src="warning.js"></script>
+  </body>
+</html>

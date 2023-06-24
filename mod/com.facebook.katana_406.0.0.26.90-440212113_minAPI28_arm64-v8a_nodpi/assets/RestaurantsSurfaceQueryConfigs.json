@@ -1,0 +1,12 @@
+{
+  "$generated": "@generated SignedSource<<3d95f278fdefcb0ad730690a53fcc264>>",
+  "RestaurantsSurfaceQuery": {
+    "id": "4834188343375628",
+    "variables": [
+      "filter_input",
+      "count",
+      "cursor",
+      "should_skip_ig"
+    ]
+  }
+}

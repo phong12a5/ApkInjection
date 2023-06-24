@@ -1,0 +1,102 @@
+{
+  "layout": {
+    "bloks_payload": {
+      "data": [],
+      "tree": {
+        "㐈": {
+          " ": [
+            {
+              "㐈": {
+                " ": [
+                  {
+                    "㐈": {
+                      "&": {
+                        "㐂": {
+                          "#": {
+                            "㐜": {
+                              "#": {
+                                "㐵": {
+                                  "$": "#FFFEFFFF",
+                                  "#": "#FE242526"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      " ": [
+                        {
+                          "㐈": {
+                            " ": [
+                              {
+                                "㕢": {
+                                  "": {
+                                    "㐸": {
+                                      "D": "32dp",
+                                      "*": "32dp",
+                                      "#": "center"
+                                    }
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      ],
+                      ",": "center",
+                      "$": "center",
+                      "": {
+                        "㐸": {
+                          "D": "100%",
+                          "*": "100%"
+                        }
+                      }
+                    }
+                  }
+                ],
+                "!": "bnrhav:2316"
+              }
+            }
+          ],
+          "!": "bnrhav:2317",
+          "": [
+            {
+              "㾶": {
+                "#": " (bk.action.core.Match, (bk.action.core.GetArg, 2), (bk.action.array.Make, (bk.action.core.Pattern, \"failed\", (bk.action.core.FuncConst, (bk.action.core.Match, (bk.action.bloks.GetParameter, \"__infra__ttrc_instance_id\"), (bk.action.array.Make, (bk.action.core.Pattern, null, (bk.action.core.FuncConst, 1))), (bk.action.core.Default, (bk.action.core.FuncConst, (bk.action.ttrc.InteractionFailed, (bk.action.bloks.GetParameter, \"__infra__ttrc_marker_id\"), (bk.action.bloks.GetParameter, \"__infra__ttrc_instance_id\"), \"\", null))))))), (bk.action.core.Default, (bk.action.core.FuncConst, 1)))",
+                "": " (bk.action.array.Make, \")\", (bk.action.map.Get, (bk.action.core.Coalesce, (bk.action.bloks.GetVariable2, \"query_info_70504123902313\"), (bk.action.map.Make, (bk.action.array.Make), (bk.action.array.Make))), \"resolution_type\"))"
+              }
+            },
+            {
+              "㙚": {
+                ")": " (bk.action.bloks.FetchAsyncComponents, (bk.action.bloks.GetParameter, \"__infra__app_id\"), (bk.action.map.Make, (bk.action.array.Make), (bk.action.array.Make)), (bk.action.bloks.GetParameter, \"__infra__cache_ttl\"), (bk.action.bloks.OneTimeBind, (bk.action.tree.Make, 16376, 36, \"fetch\", 41, false, 135, (bk.action.core.FuncConst, (bk.action.array.Make, \"(\", (bk.action.bloks.GetParameter, \"__infra__enable_disk_cache\"))))))"
+              }
+            },
+            {
+              "㙚": {
+                ")": " (bk.action.core.TakeLast, (bk.action.core.Match, (bk.action.bloks.GetParameter, \"__infra__ttrc_instance_id\"), (bk.action.array.Make, (bk.action.core.Pattern, null, (bk.action.core.FuncConst, 1))), (bk.action.core.Default, (bk.action.core.FuncConst, (bk.action.ttrc.MarkerStart, (bk.action.bloks.GetParameter, \"__infra__ttrc_marker_id\"), (bk.action.bloks.GetParameter, \"__infra__ttrc_instance_id\"), (bk.action.bloks.GetParameter, \"__infra__ttrc_timestamp\"), null)))), (bk.action.core.Match, (bk.action.bloks.GetParameter, \"__infra__ttrc_instance_id\"), (bk.action.array.Make, (bk.action.core.Pattern, null, (bk.action.core.FuncConst, 1))), (bk.action.core.Default, (bk.action.core.FuncConst, (bk.action.ttrc.AddAnnotation, (bk.action.bloks.GetParameter, \"__infra__ttrc_marker_id\"), (bk.action.bloks.GetParameter, \"__infra__ttrc_instance_id\"), (bk.action.map.Make, (bk.action.array.Make, \"app_id\"), (bk.action.array.Make, (bk.action.bloks.GetParameter, \"__infra__app_id\"))))))), (bk.action.core.Match, (bk.action.bloks.GetParameter, \"__infra__ttrc_instance_id\"), (bk.action.array.Make, (bk.action.core.Pattern, null, (bk.action.core.FuncConst, 1))), (bk.action.core.Default, (bk.action.core.FuncConst, (bk.action.ttrc.AddPoint, (bk.action.bloks.GetParameter, \"__infra__ttrc_marker_id\"), (bk.action.bloks.GetParameter, \"__infra__ttrc_instance_id\"), \"load_root_template\", (bk.action.map.Make, (bk.action.array.Make), (bk.action.array.Make)))))), (bk.action.core.Match, (bk.action.bloks.GetParameter, \"__infra__ttrc_instance_id\"), (bk.action.array.Make, (bk.action.core.Pattern, null, (bk.action.core.FuncConst, 1))), (bk.action.core.Default, (bk.action.core.FuncConst, (bk.action.ttrc.AddQuery, (bk.action.bloks.GetParameter, \"__infra__ttrc_marker_id\"), (bk.action.bloks.GetParameter, \"__infra__ttrc_instance_id\"), (bk.action.bloks.GetParameter, \"__infra__app_id\"), (bk.action.bloks.GetParameter, \"__infra__cache_ttl\"))))))"
+              }
+            },
+            {
+              "㓢": {
+                "&": "bnrhav:2337",
+                "$": " (bk.action.core.Match, (bk.action.bloks.GetParameter, \"__infra__ttrc_instance_id\"), (bk.action.array.Make, (bk.action.core.Pattern, null, (bk.action.core.FuncConst, 1))), (bk.action.core.Default, (bk.action.core.FuncConst, (bk.action.ttrc.SurfaceLeft, (bk.action.bloks.GetParameter, \"__infra__ttrc_marker_id\"), (bk.action.bloks.GetParameter, \"__infra__ttrc_instance_id\"), null))))"
+              }
+            }
+          ]
+        }
+      },
+      "component_queries": [
+        {
+          "id": "70504123902313",
+          "targets": {
+            "genScreenContent": "bnrhav:2316"
+          },
+          "app_id_expr": " (bk.action.bloks.GetParameter, \"__infra__app_id\")",
+          "cache_ttl_expr": " (bk.action.bloks.GetParameter, \"__infra__cache_ttl\")",
+          "client_params": " (bk.action.map.Make, (bk.action.array.Make, \"__infra_component_did_render\"), (bk.action.array.Make, (bk.action.callback.MakeWithScopeOnly, (bk.action.core.FuncConst, (bk.action.core.Apply, (bk.action.core.FuncConst, (bk.action.core.TakeLast, (bk.action.core.SetArg, 0, (bk.action.core.Coalesce, (bk.action.array.Get, (bk.action.core.Coalesce, (bk.action.bloks.GetVariable2, \"query_info_70504123902313\"), (bk.action.map.Make, (bk.action.array.Make), (bk.action.array.Make))), \"resolution_type\"), (bk.action.mins.Raise, \"asNonnull got null\"))), (bk.action.core.Match, (bk.action.f32.Eq, (bk.action.core.GetArg, 0), \"resolved_sync\"), (bk.action.array.Make, (bk.action.core.Pattern, true, (bk.action.core.FuncConst, (bk.action.core.Match, (bk.action.bloks.GetParameter, \"__infra__ttrc_instance_id\"), (bk.action.array.Make, (bk.action.core.Pattern, null, (bk.action.core.FuncConst, 1))), (bk.action.core.Default, (bk.action.core.FuncConst, (bk.action.ttrc.CachedContentDisplayed, (bk.action.bloks.GetParameter, \"__infra__ttrc_marker_id\"), (bk.action.bloks.GetParameter, \"__infra__ttrc_instance_id\"), (bk.action.bloks.GetParameter, \"__infra__app_id\"), (bk.action.core.Coalesce, (bk.action.map.Get, (bk.action.core.Coalesce, (bk.action.bloks.GetVariable2, \"query_info_70504123902313\"), (bk.action.map.Make, (bk.action.array.Make), (bk.action.array.Make))), \"cache_age\"), (bk.action.i64.Const, 0)), (bk.action.tree.Make, 16524, 35, true)))))))), (bk.action.core.Default, (bk.action.core.FuncConst, (bk.action.core.Match, (bk.action.bloks.GetParameter, \"__infra__ttrc_instance_id\"), (bk.action.array.Make, (bk.action.core.Pattern, null, (bk.action.core.FuncConst, 1))), (bk.action.core.Default, (bk.action.core.FuncConst, (bk.action.ttrc.NetworkContentDisplayed, (bk.action.bloks.GetParameter, \"__infra__ttrc_marker_id\"), (bk.action.bloks.GetParameter, \"__infra__ttrc_instance_id\"), (bk.action.bloks.GetParameter, \"__infra__app_id\")))))))))))))))",
+          "is_scoped": false
+        }
+      ]
+    }
+  }
+}

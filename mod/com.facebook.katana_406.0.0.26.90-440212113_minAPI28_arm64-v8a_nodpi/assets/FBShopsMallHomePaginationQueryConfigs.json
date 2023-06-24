@@ -1,0 +1,14 @@
+{
+  "$generated": "@generated SignedSource<<bcb3a340edc6d74e5f062cf0b856d72e>>",
+  "FBShopsMallHomePaginationQuery": {
+    "id": "6083896371649485",
+    "variables": [
+      "FBShopsMallFeedScrollView_HEIGHT",
+      "FBShopsMallFeedScrollView_WIDTH",
+      "availableProductsOnly",
+      "count",
+      "params",
+      "scale"
+    ]
+  }
+}

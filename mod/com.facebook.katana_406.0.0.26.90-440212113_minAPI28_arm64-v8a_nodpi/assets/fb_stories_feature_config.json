@@ -1,0 +1,148 @@
+{
+  "datasets": [
+    {
+      "columns": [
+        {
+          "isAutoIncrement": false,
+          "isNullable": false,
+          "isPrimaryKey": true,
+          "name": "user_id",
+          "type": 1
+        },
+        {
+          "isAutoIncrement": false,
+          "isNullable": true,
+          "isPrimaryKey": false,
+          "name": "reachability",
+          "type": 0
+        },
+        {
+          "isAutoIncrement": false,
+          "isNullable": false,
+          "isPrimaryKey": false,
+          "name": "__modification_timestamp_ms__",
+          "type": 1
+        }
+      ],
+      "hashCode": "b4937fe60cb73bc08853540c86179dc8",
+      "id": 9,
+      "name": "fb_app_reachability_dataset",
+      "retentionInSec": 864000
+    },
+    {
+      "columns": [
+        {
+          "isAutoIncrement": false,
+          "isNullable": false,
+          "isPrimaryKey": true,
+          "name": "user_id",
+          "type": 1
+        },
+        {
+          "isAutoIncrement": false,
+          "isNullable": true,
+          "isPrimaryKey": false,
+          "name": "latency_state",
+          "type": 1
+        },
+        {
+          "isAutoIncrement": false,
+          "isNullable": false,
+          "isPrimaryKey": false,
+          "name": "__modification_timestamp_ms__",
+          "type": 1
+        }
+      ],
+      "hashCode": "dd2eaf4f84fc08cceef27c4744d64599",
+      "id": 10,
+      "name": "fb_app_latency_state_dataset",
+      "retentionInSec": 864000
+    }
+  ],
+  "events": [
+    {
+      "hashCode": "673e3a40af5998606cf3f81eff5356b1",
+      "id": 6,
+      "name": "fb_app_reachability_event",
+      "properties": [
+        {
+          "isNullable": false,
+          "name": "user_id",
+          "type": 1
+        },
+        {
+          "isNullable": false,
+          "name": "reachability",
+          "type": 0
+        }
+      ]
+    },
+    {
+      "hashCode": "d62869fc4b9fcac22401a6d5e65cb1a2",
+      "id": 7,
+      "name": "fb_app_latency_state_event",
+      "properties": [
+        {
+          "isNullable": false,
+          "name": "user_id",
+          "type": 1
+        },
+        {
+          "isNullable": false,
+          "name": "latency_state",
+          "type": 1
+        }
+      ]
+    }
+  ],
+  "readPathIRs": [
+    {
+      "bindings": [],
+      "datasetSchemaIds": [
+        10
+      ],
+      "featureId": 32,
+      "featureStatus": 0,
+      "featureType": 0,
+      "hashCode": "a4b35bfb26107bfc677701ca5bd8367e",
+      "id": 32,
+      "sql": "SELECT \"latency_state\" FROM (SELECT \"latency_state\" FROM (SELECT  *  FROM (SELECT * FROM fb_app_latency_state_dataset)))"
+    },
+    {
+      "bindings": [],
+      "datasetSchemaIds": [
+        9
+      ],
+      "featureId": 33,
+      "featureStatus": 0,
+      "featureType": 0,
+      "hashCode": "1fc6c65ab6898e9e15ae840661c60d6d",
+      "id": 33,
+      "sql": "SELECT \"reachability\" FROM (SELECT \"reachability\" FROM (SELECT  *  FROM (SELECT * FROM fb_app_reachability_dataset)))"
+    }
+  ],
+  "writePathIRs": [
+    {
+      "bindings": [
+        "user_id",
+        "reachability"
+      ],
+      "datasetSchemaId": 9,
+      "eventSchemaId": 6,
+      "hashCode": "5bf8c35cb18fdf3e20b6d3e4878207a3",
+      "id": 9,
+      "sql": "WITH fb_app_reachability_event(user_id, reachability) AS (VALUES (?, ?)) INSERT OR REPLACE INTO fb_app_reachability_dataset SELECT \"user_id\", \"reachability\", CAST((julianday('now') - 2440587.5) * 86400000 AS INTEGER) AS \"__modification_timestamp_ms__\" FROM (SELECT \"reachability\", \"user_id\" FROM (SELECT * FROM fb_app_reachability_event))"
+    },
+    {
+      "bindings": [
+        "user_id",
+        "latency_state"
+      ],
+      "datasetSchemaId": 10,
+      "eventSchemaId": 7,
+      "hashCode": "460008d89f34708ba01576cf6ab4f1be",
+      "id": 10,
+      "sql": "WITH fb_app_latency_state_event(user_id, latency_state) AS (VALUES (?, ?)) INSERT OR REPLACE INTO fb_app_latency_state_dataset SELECT \"user_id\", \"latency_state\", CAST((julianday('now') - 2440587.5) * 86400000 AS INTEGER) AS \"__modification_timestamp_ms__\" FROM (SELECT \"latency_state\", \"user_id\" FROM (SELECT * FROM fb_app_latency_state_event))"
+    }
+  ]
+}

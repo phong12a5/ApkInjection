@@ -1,0 +1,19 @@
+{
+  "$generated": "@generated SignedSource<<25c0a70d35a84eb23f4191f42ca81134>>",
+  "FBShopsMallSingleHomeUtilsQuery": {
+    "id": "5948472148576771",
+    "variables": [
+      "FBShopsMallFeedScrollView_HEIGHT",
+      "FBShopsMallFeedScrollView_WIDTH",
+      "availableProductsOnly",
+      "categoryPickerParams",
+      "count",
+      "nux_ids",
+      "params",
+      "scale",
+      "showOnboardingNUX",
+      "showRNCart",
+      "showSavedNUX"
+    ]
+  }
+}

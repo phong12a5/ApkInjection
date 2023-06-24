@@ -1,0 +1,320 @@
+[
+  {
+    "disabled": false,
+    "hash": "42141ecc2038b6d694ff45c21cb3bf4c44844ca2d3150f2b76632470bb19f4d3",
+    "name": "arservicesoptional",
+    "path": "arservicesoptional.apk"
+  },
+  {
+    "disabled": false,
+    "hash": "69f60847f5a08fabaa63c3b1b06cb7c6d86762efd073723184d2a35e8581e219",
+    "name": "assistant",
+    "path": "assistant.apk"
+  },
+  {
+    "disabled": false,
+    "hash": "2359a8b7e44b28881a55bdc2a8c0f271b650f467c3dc2b12a4bb6755401e071e",
+    "name": "assistantclientplatform",
+    "path": "assistantclientplatform.apk"
+  },
+  {
+    "disabled": false,
+    "hash": "b3e203148bab08af6523b27591cb6933495f0f6d6f3955f65b7a7fa878531199",
+    "name": "awesomizer",
+    "path": "awesomizer.apk"
+  },
+  {
+    "disabled": false,
+    "hash": "ea9ac15600b76e0d1e2267766a50e411f591d6da130c0146befc53e1dc87e811",
+    "name": "cdl",
+    "path": "cdl.apk"
+  },
+  {
+    "disabled": false,
+    "hash": "ca850b6b5abc8767562dcc25461db985c3a3672f51694fc7894e057cf2ed3587",
+    "name": "cgnativeplayer",
+    "path": "cgnativeplayer.apk"
+  },
+  {
+    "disabled": false,
+    "hash": "6ab961922f78eaba3a517cacc6d4071a5910204aeea1956d0942033acd2e6bcd",
+    "name": "cgwebrtc",
+    "path": "cgwebrtc.apk"
+  },
+  {
+    "disabled": false,
+    "hash": "9c51b16fc058f5fb6d1c9846f704d24f0a77d84b9fbb08500ddc2ba304b7c1d6",
+    "name": "codegenerator",
+    "path": "codegenerator.apk"
+  },
+  {
+    "disabled": false,
+    "hash": "bcd32ab05b3fbcc492625c1b87902ec460b1d21b217da299ac5e9e1afa1d468b",
+    "name": "creditcardscanner",
+    "path": "creditcardscanner.apk"
+  },
+  {
+    "disabled": true,
+    "hash": "e2279a105754db562165a5a1f3c3ae9a82ac96ce0fc8ed183d0908a3d6b107ce",
+    "name": "d_dex_raw",
+    "path": "d_dex_raw.apk"
+  },
+  {
+    "disabled": true,
+    "hash": "10a32ed725c29bbaed8d68884bf700c1a56149315f9cb4e90fea4209971ac0c5",
+    "name": "d_dex_spk",
+    "path": "d_dex_spk.apk"
+  },
+  {
+    "disabled": true,
+    "hash": "82699d0081fdde2054107e49dab4c1483676317c2e571c742b2059cbd08fc44e",
+    "name": "d_native_raw",
+    "path": "d_native_raw.apk"
+  },
+  {
+    "disabled": true,
+    "hash": "75467abc19f98de3cd91fac83686cd352635e6c67296b14b61c211d97bc89490",
+    "name": "d_native_spk",
+    "path": "d_native_spk.apk"
+  },
+  {
+    "disabled": false,
+    "hash": "0769489f469ab02794702fee2d841a8e82394b46d184e32f6f82ee5c349697b3",
+    "name": "delta1",
+    "path": "delta1.apk"
+  },
+  {
+    "disabled": false,
+    "hash": "5da6f7d1814133268600415707f5486373fc4a31b8e304744f41a344a9d5477c",
+    "name": "delta2",
+    "path": "delta2.apk"
+  },
+  {
+    "disabled": false,
+    "hash": "97a554a7444f8749f1e0246bd3ae6cf144f89eba33af2c9cc07341c76a38d9ca",
+    "name": "delta3",
+    "path": "delta3.apk"
+  },
+  {
+    "disabled": false,
+    "hash": "ce4848c6e50f774e241a362affd185c2b9be45fc3b5b8eea5da896fd9ed1e182",
+    "name": "dittomodule",
+    "path": "dittomodule.apk"
+  },
+  {
+    "disabled": false,
+    "hash": "9107ab3228393d21b713e2f66439bd4f7e001ff5017936c85cd5bb8f77534092",
+    "name": "diverse",
+    "path": "diverse.apk"
+  },
+  {
+    "disabled": false,
+    "hash": "16f4a5e9ea7ce59015087c119888b3094c83b99fc2721ae8acd6b1074799ab53",
+    "name": "eventsguestlist",
+    "path": "eventsguestlist.apk"
+  },
+  {
+    "disabled": false,
+    "hash": "703ff29e4c9efdb7ff97c9853d7ccceaf3deba720924185e958832ed532393fa",
+    "name": "groupsadmin",
+    "path": "groupsadmin.apk"
+  },
+  {
+    "disabled": false,
+    "hash": "1fd152de77f85617fa97576a911f11eb48ba442600ccd4a58fa3202a39e7ae6e",
+    "name": "groupsadminactivity",
+    "path": "groupsadminactivity.apk"
+  },
+  {
+    "disabled": false,
+    "hash": "6964b6bf1d794a68e93eda1b4c3190a07fdd8814e0f6c78cd70c63f7be6add44",
+    "name": "heliumfulldownload",
+    "path": "heliumfulldownload.apk"
+  },
+  {
+    "disabled": false,
+    "hash": "7d937982ca775650234fcdf98ce02005738fc065e74ca9eea788d1e7a8b491e4",
+    "name": "heliumiab",
+    "path": "heliumiab.apk"
+  },
+  {
+    "disabled": false,
+    "hash": "39c78f846a7e705503f355484433304892f7d0f5ad4ff210ae103fcd96eba225",
+    "name": "hermessnapshot",
+    "path": "hermessnapshot.apk"
+  },
+  {
+    "disabled": false,
+    "hash": "dd39ab72b2e07f9f625be15fdaa4e3c184720a6e82a29e4b560fde0210e94cf2",
+    "name": "horizon",
+    "path": "horizon.apk"
+  },
+  {
+    "disabled": false,
+    "hash": "83b584993bccc9804291d7fb8e0bc5f3fd71106852d4c6d4847281e6c39cb22c",
+    "name": "iddetectorpytorch",
+    "path": "iddetectorpytorch.apk"
+  },
+  {
+    "disabled": false,
+    "hash": "abf753bb84882b0e29b104e4a57e5267e32add98e584dc91b29865967e49aa88",
+    "name": "instantgames",
+    "path": "instantgames.apk"
+  },
+  {
+    "disabled": false,
+    "hash": "ecf10140a1e04bb98717ef55cdebcaaa5113ca4b4ed7ecc1705c7a1f2b57d014",
+    "name": "instantgamesads",
+    "path": "instantgamesads.apk"
+  },
+  {
+    "disabled": false,
+    "hash": "99e025f1c38f1fea9f077fd7fd60331f58ffc2c71c4b199f9ef4d967852053c2",
+    "name": "internsettings",
+    "path": "internsettings.apk"
+  },
+  {
+    "disabled": true,
+    "hash": "6467c2cbaff4b4aa94e19697b0db257c9829846933ef329c20efbef8b09b47ec",
+    "name": "location",
+    "path": "location.apk"
+  },
+  {
+    "disabled": false,
+    "hash": "6db0a6a90370f11d6d6b132b451c661deaf821384d0a67a19e2311bbf89037e8",
+    "name": "mobileconfig",
+    "path": "mobileconfig.apk"
+  },
+  {
+    "disabled": false,
+    "hash": "d2dd3a7b8e1f58286f9bf4bf3b8da2fb2b9d3656a85968065986dd079a4e2448",
+    "name": "pages",
+    "path": "pages.apk"
+  },
+  {
+    "disabled": false,
+    "hash": "6d0e437989c5d9b746e1726bfece144a6bd707cb372a6d004fc4dd0a2c1c2753",
+    "name": "papaya",
+    "path": "papaya.apk"
+  },
+  {
+    "disabled": false,
+    "hash": "6d7616f941a74b9d7a31fe6c0e16434a2754fe6b29a5b18fb72e2273f60bfb2f",
+    "name": "papayaanalyticstorch",
+    "path": "papayaanalyticstorch.apk"
+  },
+  {
+    "disabled": false,
+    "hash": "0342da6c43ee9372550e8d07d13b78642ffc2262bd1fd3d4ea02260cdda69815",
+    "name": "papayatorch",
+    "path": "papayatorch.apk"
+  },
+  {
+    "disabled": false,
+    "hash": "e92877397309ec97e6c71572e607962ae8c8ab86451056bef79c407e8d16b459",
+    "name": "photo3djni",
+    "path": "photo3djni.apk"
+  },
+  {
+    "disabled": true,
+    "hash": "68c852d0fada86c93f85944133e4de9bac229fbafbc53a6ceb5b2719c6761c3d",
+    "name": "pvdcontextprediction",
+    "path": "pvdcontextprediction.apk"
+  },
+  {
+    "disabled": false,
+    "hash": "aa355c71c49dd5477a6446936421a75d4c480007b09d1e76eb76eca4ea0d7b42",
+    "name": "pytorch",
+    "path": "pytorch.apk"
+  },
+  {
+    "disabled": false,
+    "hash": "c1cd507bcc48ddb0c5bcdef21412562c36fa31e8d1eb2bf9efd18a15a0f575bf",
+    "name": "s_assistantclientplatform_cgwebrtc",
+    "path": "s_assistantclientplatform_cgwebrtc.apk"
+  },
+  {
+    "disabled": false,
+    "hash": "6fd53848e1cbcb009fee24cc6a5de7742a2e5d918c92558f8aa60fb04a96db80",
+    "name": "s_cgwebrtc_horizon",
+    "path": "s_cgwebrtc_horizon.apk"
+  },
+  {
+    "disabled": false,
+    "hash": "469f86bc3622a6212ce9b502ec6dc79649961f1039a91b4e60d6c008a07e37ee",
+    "name": "s_codegenerator_internsettings",
+    "path": "s_codegenerator_internsettings.apk"
+  },
+  {
+    "disabled": true,
+    "hash": "e995bf7b9fb9384fb00f2ec17125a0e83e2e7bd68057e03342838fc00305b6c5",
+    "name": "s_delta1_delta2_delta3",
+    "path": "s_delta1_delta2_delta3.apk"
+  },
+  {
+    "disabled": true,
+    "hash": "290fa9e888cd26fc603f28152baa8de870aad02f360e709b9675c9f854736786",
+    "name": "s_internsettings_pytorch",
+    "path": "s_internsettings_pytorch.apk"
+  },
+  {
+    "disabled": false,
+    "hash": "eae7274dc8f09adc58b8b5214d84ba21d75fc233c732af70412965c695513baf",
+    "name": "s_papaya_torchedlooper",
+    "path": "s_papaya_torchedlooper.apk"
+  },
+  {
+    "disabled": false,
+    "hash": "bd102a8d6c862c5a91cda3795d2206e2ed5305539dbc7cdb0cd46b383001cddd",
+    "name": "s_papayaanalyticstorch_papayatorch",
+    "path": "s_papayaanalyticstorch_papayatorch.apk"
+  },
+  {
+    "disabled": false,
+    "hash": "2ffb515d5e4e2baeb89f98c37d6c78e7d9ccbb4bb618e007e5e3765606b8fb02",
+    "name": "s_papayaanalyticstorch_papayatorch_torchedlooper",
+    "path": "s_papayaanalyticstorch_papayatorch_torchedlooper.apk"
+  },
+  {
+    "disabled": false,
+    "hash": "c806ed927cbbc2b0f9039e1d8d0485979cb93ce19775e5f6e3a3decbeef51cc5",
+    "name": "s_papayatorch_torchedlooper",
+    "path": "s_papayatorch_torchedlooper.apk"
+  },
+  {
+    "disabled": true,
+    "hash": "7c188a537a9ad2adedf4401d954abcbb7e35a5dbad8025664782d7a009488336",
+    "name": "scselfie",
+    "path": "scselfie.apk"
+  },
+  {
+    "disabled": false,
+    "hash": "97d60803a206a4beb2c60b8c6cdc8491323f8a6b41101df4eddfe355ef0ac32c",
+    "name": "securitycheckup",
+    "path": "securitycheckup.apk"
+  },
+  {
+    "disabled": false,
+    "hash": "81df2b5d0fafcf26297710ac782871e5b5a2bb7631ae5d75a9314f1730e7fea2",
+    "name": "slam",
+    "path": "slam.apk"
+  },
+  {
+    "disabled": false,
+    "hash": "b255d587f61fe49fff298f7272a21eea4f2cc88e7998e415c345a154e82542d4",
+    "name": "supmediastreamcontroller",
+    "path": "supmediastreamcontroller.apk"
+  },
+  {
+    "disabled": false,
+    "hash": "ff9cd836cb74d44e989c55f503258e28684f63f1ef2723fad1f25d4058d06cfc",
+    "name": "surveyplatformremixnt",
+    "path": "surveyplatformremixnt.apk"
+  },
+  {
+    "disabled": false,
+    "hash": "27badaee4222a9216e8b43da62a4921b5d3869927a687c0adfac4a2f843fbae6",
+    "name": "torchedlooper",
+    "path": "torchedlooper.apk"
+  }
+]

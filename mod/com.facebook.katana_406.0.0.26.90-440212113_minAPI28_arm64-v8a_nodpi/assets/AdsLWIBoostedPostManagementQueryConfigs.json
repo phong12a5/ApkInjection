@@ -1,0 +1,13 @@
+{
+  "$generated": "@generated SignedSource<<ea7e54855d7edb059142fbd996e18ce4>>",
+  "AdsLWITetraBoostedPostManagementContainerViewQuery": {
+    "id": "9006329692742954",
+    "variables": [
+      "graphqlStoryID",
+      "pageID",
+      "boostID",
+      "callsite",
+      "scale"
+    ]
+  }
+}

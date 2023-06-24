@@ -1,0 +1,11 @@
+{
+  "$generated": "@generated SignedSource<<53211b896e37a2c403cc6748fe1d14ed>>",
+  "AdsLWITetraBoostedPurchaseManagementContainerViewQuery": {
+    "id": "8813602498681348",
+    "variables": [
+      "boostID",
+      "pageID",
+      "scale"
+    ]
+  }
+}

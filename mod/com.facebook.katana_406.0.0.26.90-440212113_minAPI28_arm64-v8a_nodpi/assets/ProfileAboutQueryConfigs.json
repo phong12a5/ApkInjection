@@ -1,0 +1,14 @@
+{
+  "$generated": "@generated SignedSource<<56e2b5a443be2e5d235385fcfec0ca5c>>",
+  "ProfileAboutAppQuery": {
+    "id": "5970478076329532",
+    "variables": [
+      "profileID",
+      "disableEdit",
+      "fieldSectionItemCount",
+      "scale",
+      "sectionCount",
+      "usePaginatedAppSections"
+    ]
+  }
+}

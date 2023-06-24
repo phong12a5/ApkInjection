@@ -1,0 +1,13 @@
+{
+  "$generated": "@generated SignedSource<<622cf41025c71316da16c71825e141ef>>",
+  "BMAdsLWIHomeWidgetViewQuery": {
+    "id": "5775786085846442",
+    "variables": [
+      "exludedProducts",
+      "pageID",
+      "mediumPlusListImageSize",
+      "showNewNullState",
+      "shouldFetchProductData"
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "$generated": "@generated SignedSource<<9e29a15992260816d22ae715d751b83c>>",
+  "FBShopsMallHoistedUtilsPrimaryUnitQuery": {
+    "id": "6748475165167724",
+    "variables": [
+      "adID",
+      "showInlineCTA",
+      "showInlineCTAPerfOpt",
+      "hoistedPrimaryParams",
+      "FBShopsMallFeedScrollView_HEIGHT",
+      "FBShopsMallFeedScrollView_WIDTH",
+      "availableProductsOnly",
+      "intScreenWidth",
+      "referralCode",
+      "referralSurface",
+      "scale",
+      "giftingFriendID",
+      "hasGiftingFriendID"
+    ]
+  }
+}

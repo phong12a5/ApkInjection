@@ -21,6 +21,10 @@ public class Grub {
         XposedCompat.isFirstApplication = true;
     }
 
+    private static void registerHostCommand(Context context) {
+
+    }
+
     public static void hookTest() {
         changeSysProps();
     }

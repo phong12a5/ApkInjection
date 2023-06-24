@@ -1,0 +1,19 @@
+{
+  "$generated": "@generated SignedSource<<8299558022a452d35466f6b541bc9201>>",
+  "AdCenterPageManagementListViewQuery": {
+    "id": "5547275678715576",
+    "variables": [
+      "callsite",
+      "first",
+      "num_days",
+      "page_id",
+      "source_location"
+    ]
+  },
+  "PromotionsHubViewQuery": {
+    "id": "5324453684268780",
+    "variables": [
+      "id"
+    ]
+  }
+}

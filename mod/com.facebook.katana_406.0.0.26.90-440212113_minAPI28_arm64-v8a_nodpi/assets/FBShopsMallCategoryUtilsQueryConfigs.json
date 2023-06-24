@@ -1,0 +1,10 @@
+{
+  "$generated": "@generated SignedSource<<f8829c9c89d0ebdc4d9adbb51c6a95fa>>",
+  "FBShopsMallCategoryUtilsQuery": {
+    "id": "5309935482360365",
+    "variables": [
+      "categoryPickerParams",
+      "nux_ids"
+    ]
+  }
+}

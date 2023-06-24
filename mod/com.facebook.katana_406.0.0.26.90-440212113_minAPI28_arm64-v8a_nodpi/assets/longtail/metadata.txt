@@ -1,0 +1,7 @@
+.superpack_files 1
+.superpack_extension spo
+.id longtail
+.requires dex
+.locators
+.locator_id 22
+longtail-1.dex 3b2ea1a22de50f73c17210853029dcfa10bd5a35 store5ccc.dex01.Canary
