@@ -7,6 +7,7 @@ apktool d -r -f -o com.pdt.grub ../app/release/app-release.apk
 
 echo "copy grub smali to facebook smali .."
 cp -rf com.pdt.grub/smali/* $1/smali/
+cp -rf com.pdt.grub/lib/* $1/lib/
 
 mkdir -p modified_apk
 rm -rf modified_apk/*
@@ -18,4 +19,4 @@ echo "optimize apk ..."
 zipalign -v 4 modified_apk/$1.apk modified_apk/$1_aligned.apk
 
 echo "re-sign apk ..."
-apksigner sign --ks keystores/goodfarmer_key.jks modified_apk/$1_aligned.apk
+apksigner sign --ks ../keystores/goodfarmer_key.jks modified_apk/$1_aligned.apk

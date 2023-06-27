@@ -1,4 +1,4 @@
-.class final Lcom/pdt/grub/Grub$1;
+.class Lcom/pdt/grub/Grub$1;
 .super Lde/robv/android/xposed/XC_MethodHook;
 .source "Grub.java"
 
@@ -9,7 +9,7 @@
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
-    accessFlags = 0x8
+    accessFlags = 0x0
     name = null
 .end annotation
 
@@ -18,7 +18,7 @@
 .method constructor <init>()V
     .locals 0
 
-    .line 48
+    .line 39
     invoke-direct {p0}, Lde/robv/android/xposed/XC_MethodHook;-><init>()V
 
     return-void
@@ -34,10 +34,10 @@
         }
     .end annotation
 
-    .line 51
+    .line 42
     invoke-super {p0, p1}, Lde/robv/android/xposed/XC_MethodHook;->afterHookedMethod(Lde/robv/android/xposed/XC_MethodHook$MethodHookParam;)V
 
-    .line 66
+    .line 57
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V

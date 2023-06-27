@@ -8,6 +8,7 @@ import android.util.Log;
 import com.pdt.grub.device.VDeviceInfoHelper;
 import com.pdt.grub.device.VDeviceInfoManager;
 import com.pdt.grub.receiver.CommandReceiver;
+import com.pdt.grub.xposed.entry.XposedModuleEntry;
 import com.swift.sandhook.xposedcompat.XposedCompat;
 
 import de.robv.android.xposed.XC_MethodHook;
@@ -16,19 +17,9 @@ import de.robv.android.xposed.XposedBridge;
 public class Grub {
     private static final String TAG = "[PDT]Grub";
     private static final CommandReceiver sCommandReceiver = new CommandReceiver();
-    public static void initialize(Context context) {
+    public static void initialize() {
         Log.i(TAG, "initialize");
-        //setup for xposed
-        //for xposed compat only(no need xposed comapt new)
-        XposedCompat.cacheDir = context.getCacheDir();
-
-        //for load xp module(sandvxp)
-        XposedCompat.context = context;
-        XposedCompat.classLoader = context.getClassLoader();
-        XposedCompat.isFirstApplication = true;
-
-        VDeviceInfoManager.get().init(context);
-        registerHostCommand(context);
+        XposedModuleEntry.init();
         hookTest();
     }
 
