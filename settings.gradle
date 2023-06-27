@@ -12,6 +12,7 @@
 //        mavenCentral()
 //    }
 //}
-//rootProject.name = "Grub"
+rootProject.name = "Grub"
 include ':app'
 include ':core'
+include ':builder'

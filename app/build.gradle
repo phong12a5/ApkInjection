@@ -42,6 +42,37 @@ android {
     }
 }
 
+//task "copyDebugDex"(type: Copy) {
+//    outputs.upToDateWhen { false }  // do not UP-TO_DATE
+//    dependsOn("assembleRelease")
+//    from "$buildDir/intermediates/dex/debug/mergeDexDebug/classes.dex"
+//    rename "(.*).dex", "classes.dex"
+//    into "$rootProject.projectDir/builder/src/main/assets/dex/sandhook"
+//}
+
+task "copyDebugSo"(type: Copy) {
+    outputs.upToDateWhen { false }  // do not UP-TO_DATE
+    dependsOn("assembleRelease")
+    from "$buildDir/intermediates/merged_native_libs/release/out/lib"
+    rename '(.*).so', '$1'
+    into "$rootProject.projectDir/builder/src/main/assets/lib"
+}
+
+task "copyReleaseApk"(type: Copy) {
+    outputs.upToDateWhen { false }  // do not UP-TO_DATE
+    dependsOn("assembleRelease")
+    from "$buildDir/outputs/apk/release/app-release.apk"
+    rename "(.*).apk", "grub_plugin.apk"
+    into "$rootProject.projectDir/builder/src/main/assets/apk"
+}
+
+task "copyLoaderFiles"() {
+    outputs.upToDateWhen { false }
+    dependsOn("copyDebugSo")
+//    dependsOn("copyDebugDex")
+    dependsOn("copyReleaseApk")
+}
+
 dependencies {
     implementation project(':core')
 }
