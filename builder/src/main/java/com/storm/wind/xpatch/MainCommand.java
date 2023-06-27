@@ -1,14 +1,12 @@
 package com.storm.wind.xpatch;
 
 import com.storm.wind.xpatch.base.BaseCommand;
-import com.storm.wind.xpatch.task.ApkModifyTask;
 import com.storm.wind.xpatch.task.BuildAndSignApkTask;
+import com.storm.wind.xpatch.task.CopySmaliTask;
+import com.storm.wind.xpatch.task.DecomplieApkTask;
 import com.storm.wind.xpatch.task.SaveApkSignatureTask;
-import com.storm.wind.xpatch.task.SaveOriginalApkTask;
-import com.storm.wind.xpatch.task.SaveOriginalApplicationNameTask;
 import com.storm.wind.xpatch.task.SoAndDexCopyTask;
 import com.storm.wind.xpatch.util.FileUtils;
-import com.storm.wind.xpatch.util.ManifestParser;
 import com.wind.meditor.core.FileProcesser;
 import com.wind.meditor.property.AttributeItem;
 import com.wind.meditor.property.ModificationProperty;
@@ -17,7 +15,6 @@ import com.wind.meditor.utils.NodeValue;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -163,13 +160,24 @@ public class MainCommand extends BaseCommand {
 
         // 先解压apk到指定目录下
         long currentTime = System.currentTimeMillis();
-        FileUtils.decompressZip(apkPath, unzipApkFilePath);
+        new DecomplieApkTask(apkPath, unzipApkFilePath).run();
 
         if (showAllLogs) {
-            System.out.println(" decompress apk cost time:  " + (System.currentTimeMillis() - currentTime));
+            System.out.println("decomplie apk cost time:  " + (System.currentTimeMillis() - currentTime));
+        }
+
+        // decomplie grub_plugin
+        currentTime = System.currentTimeMillis();
+        String grubPluginApkPath = tempFilePath + "grub_plugin.apk";
+        String deGrubPluginApkPath = tempFilePath + "de_grub_plugin";
+        FileUtils.copyFileFromJar("apk/grub_plugin.apk", grubPluginApkPath);
+        new DecomplieApkTask(grubPluginApkPath, deGrubPluginApkPath).run();
+        if (showAllLogs) {
+            System.out.println("decomplie grub_pugin apk cost time:  " + (System.currentTimeMillis() - currentTime));
         }
 
         // Get the dex count in the apk zip file
+        /*
         dexFileCount = findDexFileCount(unzipApkFilePath);
 
         if (showAllLogs) {
@@ -213,17 +221,14 @@ public class MainCommand extends BaseCommand {
         }
 
         //  modify the apk dex file to make xposed can run in it
-        /*
         if (dexModificationMode && isNotEmpty(applicationName)) {
             mXpatchTasks.add(new ApkModifyTask(showAllLogs, keepBuildFiles, unzipApkFilePath, applicationName,
                     dexFileCount));
         }
-         */
-
+=
         String[] userInsertModule = getXposedModules(xposedModules);
         List<String> xposedModuleList = new ArrayList<>();
 
-        /*
         if (hookInstalledApkPath) {
             mXpatchTasks.add(new SaveOriginalApkTask(apkPath, unzipApkFilePath));
 
@@ -231,11 +236,14 @@ public class MainCommand extends BaseCommand {
             String dstXposedModulePath = (unzipApkFilePath + SaveOriginalApkTask.XPOSED_MODULE_ASSET_PATH).replace("/", File.separator);
             xposedModuleList.add(dstXposedModulePath);
         }
-         */
 
         if (userInsertModule != null && userInsertModule.length > 0) {
             xposedModuleList.addAll(Arrays.asList(userInsertModule));
         }
+         */
+
+        // copy smali
+        mXpatchTasks.add(new CopySmaliTask());
 
         //  copy xposed so and dex files into the unzipped apk
         mXpatchTasks.add(new SoAndDexCopyTask(dexFileCount, unzipApkFilePath, xposedModuleList.toArray(new String[0])

@@ -116,7 +116,7 @@ public class BuildAndSignApkTask implements Runnable {
                         .append(" " + apkPath + " ")
                         .append(" -digestalg SHA1 -sigalg SHA1withRSA ")
                         .append(" key0 ");
-//                System.out.println("\n" + signCmd + "\n");
+                System.out.println("\n" + signCmd + "\n");
                 String result = ShellCmdUtil.execCmd(signCmd.toString(), null);
                 System.out.println(" sign apk time is :" + ((System.currentTimeMillis() - time) / 1000) +
                         "s\n\n" + "  result=" + result);
@@ -172,17 +172,17 @@ public class BuildAndSignApkTask implements Runnable {
         long time = System.currentTimeMillis();
 
         String os = System.getProperty("os.name");
-        String zipalignAssetPath = "assets/zipalign";
+        System.out.println(" The running os is " + os);
+        String zipalignAssetPath = "assets/mac/zipalign";
         if (os.toLowerCase().startsWith("win")) {
-            System.out.println(" The running os is " + os);
             zipalignAssetPath = "assets/win/zipalign.exe";
         }
+
 
         String zipalignPath = (new File(inputApkPath)).getParent() + File.separator + "zipalign";
         FileUtils.copyFileFromJar(zipalignAssetPath, zipalignPath);
         ShellCmdUtil.chmodNoException(zipalignPath, ShellCmdUtil.FileMode.MODE_755);
-//        StringBuilder signCmd = new StringBuilder(zipalignPath + " ");
-        StringBuilder signCmd = new StringBuilder("zipalign");
+        StringBuilder signCmd = new StringBuilder(zipalignPath + " ");
 
         signCmd.append(" -f ")
                 .append(" -p ")
