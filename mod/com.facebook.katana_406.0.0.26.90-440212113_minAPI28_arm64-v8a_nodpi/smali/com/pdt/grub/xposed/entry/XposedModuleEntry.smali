@@ -21,7 +21,7 @@
 .method static constructor <clinit>()V
     .locals 2
 
-    .line 46
+    .line 47
     new-instance v0, Ljava/util/concurrent/atomic/AtomicBoolean;
 
     const/4 v1, 0x0
@@ -30,7 +30,7 @@
 
     sput-object v0, Lcom/pdt/grub/xposed/entry/XposedModuleEntry;->hasInited:Ljava/util/concurrent/atomic/AtomicBoolean;
 
-    .line 48
+    .line 49
     invoke-static {}, Landroid/os/Environment;->getExternalStorageDirectory()Ljava/io/File;
 
     move-result-object v0
@@ -47,7 +47,7 @@
 .method public constructor <init>()V
     .locals 0
 
-    .line 42
+    .line 43
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -56,7 +56,7 @@
 .method static synthetic access$000(Z)Ljava/util/List;
     .locals 0
 
-    .line 42
+    .line 43
     invoke-static {p0}, Lcom/pdt/grub/xposed/entry/XposedModuleEntry;->loadPackageNameListFromFile(Z)Ljava/util/List;
 
     move-result-object p0
@@ -67,7 +67,7 @@
 .method static synthetic access$100()Ljava/lang/String;
     .locals 1
 
-    .line 42
+    .line 43
     sget-object v0, Lcom/pdt/grub/xposed/entry/XposedModuleEntry;->TAG:Ljava/lang/String;
 
     return-object v0
@@ -76,7 +76,7 @@
 .method static synthetic access$200(Ljava/util/List;)V
     .locals 0
 
-    .line 42
+    .line 43
     invoke-static {p0}, Lcom/pdt/grub/xposed/entry/XposedModuleEntry;->appendPackageNameToFile(Ljava/util/List;)V
 
     return-void
@@ -95,7 +95,7 @@
         }
     .end annotation
 
-    .line 282
+    .line 284
     invoke-static {p0}, Lcom/pdt/grub/xposed/entry/XposedModuleEntry;->isEmpty(Ljava/util/Collection;)Z
 
     move-result v0
@@ -104,7 +104,7 @@
 
     return-void
 
-    .line 286
+    .line 288
     :cond_0
     new-instance v0, Ljava/io/File;
 
@@ -114,7 +114,7 @@
 
     invoke-direct {v0, v1, v2}, Ljava/io/File;-><init>(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 288
+    .line 290
     invoke-virtual {v0}, Ljava/io/File;->getParentFile()Ljava/io/File;
 
     move-result-object v1
@@ -125,7 +125,7 @@
 
     if-nez v1, :cond_1
 
-    .line 289
+    .line 291
     invoke-virtual {v0}, Ljava/io/File;->getParentFile()Ljava/io/File;
 
     move-result-object v1
@@ -135,7 +135,7 @@
     :cond_1
     const/4 v1, 0x0
 
-    .line 295
+    .line 297
     :try_start_0
     new-instance v2, Ljava/io/FileOutputStream;
 
@@ -146,7 +146,7 @@
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_2
     .catchall {:try_start_0 .. :try_end_0} :catchall_2
 
-    .line 296
+    .line 298
     :try_start_1
     new-instance v0, Ljava/io/BufferedWriter;
 
@@ -159,7 +159,7 @@
     .catch Ljava/lang/Exception; {:try_start_1 .. :try_end_1} :catch_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_1
 
-    .line 298
+    .line 300
     :try_start_2
     invoke-interface {p0}, Ljava/util/List;->iterator()Ljava/util/Iterator;
 
@@ -178,17 +178,17 @@
 
     check-cast v1, Landroid/util/Pair;
 
-    .line 299
+    .line 301
     iget-object v3, v1, Landroid/util/Pair;->first:Ljava/lang/Object;
 
     check-cast v3, Ljava/lang/String;
 
-    .line 300
+    .line 302
     iget-object v1, v1, Landroid/util/Pair;->second:Ljava/lang/Object;
 
     check-cast v1, Ljava/lang/String;
 
-    .line 301
+    .line 303
     new-instance v4, Ljava/lang/StringBuilder;
 
     invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
@@ -213,14 +213,14 @@
 
     goto :goto_0
 
-    .line 303
+    .line 305
     :cond_2
     invoke-virtual {v0}, Ljava/io/BufferedWriter;->flush()V
     :try_end_2
     .catch Ljava/lang/Exception; {:try_start_2 .. :try_end_2} :catch_0
     .catchall {:try_start_2 .. :try_end_2} :catchall_0
 
-    .line 307
+    .line 309
     invoke-static {v2}, Lcom/pdt/grub/xposed/entry/XposedModuleEntry;->closeStream(Ljava/io/Closeable;)V
 
     goto :goto_4
@@ -267,17 +267,17 @@
 
     move-object v0, v1
 
-    .line 305
+    .line 307
     :goto_3
     :try_start_3
     invoke-virtual {p0}, Ljava/lang/Exception;->printStackTrace()V
     :try_end_3
     .catchall {:try_start_3 .. :try_end_3} :catchall_3
 
-    .line 307
+    .line 309
     invoke-static {v1}, Lcom/pdt/grub/xposed/entry/XposedModuleEntry;->closeStream(Ljava/io/Closeable;)V
 
-    .line 308
+    .line 310
     :goto_4
     invoke-static {v0}, Lcom/pdt/grub/xposed/entry/XposedModuleEntry;->closeStream(Ljava/io/Closeable;)V
 
@@ -286,14 +286,14 @@
     :catchall_3
     move-exception p0
 
-    .line 307
+    .line 309
     :goto_5
     invoke-static {v1}, Lcom/pdt/grub/xposed/entry/XposedModuleEntry;->closeStream(Ljava/io/Closeable;)V
 
-    .line 308
+    .line 310
     invoke-static {v0}, Lcom/pdt/grub/xposed/entry/XposedModuleEntry;->closeStream(Ljava/io/Closeable;)V
 
-    .line 309
+    .line 311
     throw p0
 .end method
 
@@ -302,7 +302,7 @@
 
     if-eqz p0, :cond_0
 
-    .line 320
+    .line 322
     :try_start_0
     invoke-interface {p0}, Ljava/io/Closeable;->close()V
     :try_end_0
@@ -313,7 +313,7 @@
     :catch_0
     move-exception p0
 
-    .line 322
+    .line 324
     invoke-virtual {p0}, Ljava/io/IOException;->printStackTrace()V
 
     :cond_0
@@ -324,7 +324,7 @@
 .method private static configFileExist()Z
     .locals 3
 
-    .line 313
+    .line 315
     new-instance v0, Ljava/io/File;
 
     sget-object v1, Lcom/pdt/grub/xposed/entry/XposedModuleEntry;->DIR_BASE:Ljava/lang/String;
@@ -333,7 +333,7 @@
 
     invoke-direct {v0, v1, v2}, Ljava/io/File;-><init>(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 314
+    .line 316
     invoke-virtual {v0}, Ljava/io/File;->exists()Z
 
     move-result v0
@@ -344,7 +344,7 @@
 .method public static getAppContext()Landroid/content/Context;
     .locals 1
 
-    .line 335
+    .line 337
     sget-object v0, Lcom/pdt/grub/xposed/entry/XposedModuleEntry;->appContext:Landroid/content/Context;
 
     return-object v0
@@ -353,7 +353,7 @@
 .method private static getPackageNameByPath(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/String;
     .locals 0
 
-    .line 155
+    .line 157
     invoke-static {p0}, Lcom/pdt/grub/xposed/entry/util/PackageNameCache;->getInstance(Landroid/content/Context;)Lcom/pdt/grub/xposed/entry/util/PackageNameCache;
 
     move-result-object p0
@@ -368,7 +368,7 @@
 .method public static init()V
     .locals 3
 
-    .line 57
+    .line 58
     sget-object v0, Lcom/pdt/grub/xposed/entry/XposedModuleEntry;->hasInited:Ljava/util/concurrent/atomic/AtomicBoolean;
 
     const/4 v1, 0x0
@@ -383,7 +383,7 @@
 
     return-void
 
-    .line 62
+    .line 63
     :cond_0
     sget v0, Landroid/os/Build$VERSION;->SDK_INT:I
 
@@ -393,24 +393,27 @@
 
     const-string v0, ""
 
-    .line 63
+    .line 64
     filled-new-array {v0}, [Ljava/lang/String;
 
     move-result-object v0
 
     invoke-static {v0}, Lorg/lsposed/hiddenapibypass/HiddenApiBypass;->addHiddenApiExemptions([Ljava/lang/String;)Z
 
-    .line 65
+    .line 66
     :cond_1
     invoke-static {}, Lcom/pdt/grub/xposed/entry/util/XpatchUtils;->createAppContext()Landroid/content/Context;
 
     move-result-object v0
 
-    .line 66
+    .line 67
     invoke-static {v0}, Lcom/pdt/grub/xposed/entry/SandHookInitialization;->init(Landroid/content/Context;)V
 
-    .line 67
+    .line 68
     invoke-static {v0}, Lcom/pdt/grub/xposed/entry/XposedModuleEntry;->init(Landroid/content/Context;)V
+
+    .line 69
+    invoke-static {v0}, Lcom/pdt/grub/Grub;->fakeDeviceInfo(Landroid/content/Context;)V
 
     return-void
 .end method
@@ -420,7 +423,7 @@
 
     if-nez p0, :cond_0
 
-    .line 73
+    .line 75
     sget-object p0, Lcom/pdt/grub/xposed/entry/XposedModuleEntry;->TAG:Ljava/lang/String;
 
     const-string v0, "try to init XposedModuleEntry, but create app context failed !!!!"
@@ -429,66 +432,66 @@
 
     return-void
 
-    .line 77
+    .line 79
     :cond_0
     sput-object p0, Lcom/pdt/grub/xposed/entry/XposedModuleEntry;->appContext:Landroid/content/Context;
 
-    .line 79
+    .line 81
     sget v0, Landroid/os/Build$VERSION;->SDK_INT:I
 
     const/16 v1, 0x15
 
     if-le v0, v1, :cond_1
 
-    .line 80
+    .line 82
     invoke-static {p0}, Lcom/pdt/grub/xposed/entry/util/FileUtils;->isFilePermissionGranted(Landroid/content/Context;)Z
 
     move-result v0
 
     if-nez v0, :cond_1
 
-    .line 81
+    .line 83
     sget-object v0, Lcom/pdt/grub/xposed/entry/XposedModuleEntry;->TAG:Ljava/lang/String;
 
     const-string v1, "File permission is not granted, can not control xposed module by file ->xposed_config/modules.list"
 
     invoke-static {v0, v1}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 86
+    .line 88
     :cond_1
     invoke-static {p0}, Lcom/pdt/grub/xposed/entry/XposedModuleEntry;->initSELinux(Landroid/content/Context;)V
 
-    .line 88
+    .line 90
     invoke-static {p0}, Lcom/pdt/grub/xposed/entry/util/SharedPrefUtils;->init(Landroid/content/Context;)V
 
-    .line 90
+    .line 92
     invoke-virtual {p0}, Landroid/content/Context;->getClassLoader()Ljava/lang/ClassLoader;
 
     move-result-object v0
 
-    .line 93
+    .line 95
     invoke-virtual {p0}, Landroid/content/Context;->getApplicationInfo()Landroid/content/pm/ApplicationInfo;
 
     move-result-object v1
 
     invoke-static {v1, v0}, Lcom/pdt/grub/xposed/entry/XposedModuleLoader;->startInnerHook(Landroid/content/pm/ApplicationInfo;Ljava/lang/ClassLoader;)V
 
-    .line 95
+    .line 97
     new-instance v1, Ljava/util/ArrayList;
 
     invoke-direct {v1}, Ljava/util/ArrayList;-><init>()V
 
-    .line 97
+    .line 99
     invoke-static {p0}, Lcom/pdt/grub/xposed/entry/XposedModuleEntry;->loadAllInstalledModule(Landroid/content/Context;)Ljava/util/List;
 
     move-result-object v2
 
-    .line 99
+    .line 101
     invoke-static {p0, v1}, Lcom/pdt/grub/xposed/entry/XposedModuleEntry;->insertXposedModulesFromLibPath(Landroid/content/Context;Ljava/util/List;)V
 
     if-eqz v2, :cond_7
 
-    .line 102
+    .line 104
     invoke-interface {v2}, Ljava/util/List;->size()I
 
     move-result v3
@@ -497,7 +500,7 @@
 
     const/4 v3, 0x0
 
-    .line 105
+    .line 107
     invoke-interface {v1}, Ljava/util/List;->iterator()Ljava/util/Iterator;
 
     move-result-object v4
@@ -519,18 +522,18 @@
 
     if-nez v3, :cond_2
 
-    .line 107
+    .line 109
     new-instance v3, Ljava/util/ArrayList;
 
     invoke-direct {v3}, Ljava/util/ArrayList;-><init>()V
 
-    .line 109
+    .line 111
     :cond_2
     invoke-static {p0, v5}, Lcom/pdt/grub/xposed/entry/XposedModuleEntry;->getPackageNameByPath(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v7
 
-    .line 110
+    .line 112
     sget-object v8, Lcom/pdt/grub/xposed/entry/XposedModuleEntry;->TAG:Ljava/lang/String;
 
     new-instance v9, Ljava/lang/StringBuilder;
@@ -553,7 +556,7 @@
 
     invoke-static {v8, v5}, Lcom/pdt/grub/xposed/entry/util/XLog;->d(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 111
+    .line 113
     invoke-interface {v3, v7}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
     goto :goto_0
@@ -561,7 +564,7 @@
     :cond_3
     if-eqz v3, :cond_6
 
-    .line 114
+    .line 116
     invoke-interface {v3}, Ljava/util/List;->size()I
 
     move-result v4
@@ -570,7 +573,7 @@
 
     goto :goto_2
 
-    .line 117
+    .line 119
     :cond_4
     invoke-interface {v2}, Ljava/util/List;->iterator()Ljava/util/Iterator;
 
@@ -590,12 +593,12 @@
 
     check-cast v4, Ljava/lang/String;
 
-    .line 118
+    .line 120
     invoke-static {p0, v4}, Lcom/pdt/grub/xposed/entry/XposedModuleEntry;->getPackageNameByPath(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v5
 
-    .line 119
+    .line 121
     sget-object v7, Lcom/pdt/grub/xposed/entry/XposedModuleEntry;->TAG:Ljava/lang/String;
 
     new-instance v8, Ljava/lang/StringBuilder;
@@ -618,24 +621,24 @@
 
     invoke-static {v7, v8}, Lcom/pdt/grub/xposed/entry/util/XLog;->d(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 120
+    .line 122
     invoke-interface {v3, v5}, Ljava/util/List;->contains(Ljava/lang/Object;)Z
 
     move-result v5
 
     if-nez v5, :cond_5
 
-    .line 121
+    .line 123
     invoke-interface {v1, v4}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
     goto :goto_1
 
-    .line 115
+    .line 117
     :cond_6
     :goto_2
     invoke-interface {v1, v2}, Ljava/util/List;->addAll(Ljava/util/Collection;)Z
 
-    .line 127
+    .line 129
     :cond_7
     invoke-virtual {p0}, Landroid/content/Context;->getFilesDir()Ljava/io/File;
 
@@ -649,7 +652,7 @@
 
     move-result-object v2
 
-    .line 128
+    .line 130
     invoke-interface {v1}, Ljava/util/List;->iterator()Ljava/util/Iterator;
 
     move-result-object v1
@@ -672,7 +675,7 @@
 
     const-string v5, "xposed_plugin_dex"
 
-    .line 129
+    .line 131
     invoke-virtual {p0, v5, v4}, Landroid/content/Context;->getDir(Ljava/lang/String;I)Ljava/io/File;
 
     move-result-object v4
@@ -681,19 +684,19 @@
 
     move-result-object v4
 
-    .line 130
+    .line 132
     invoke-static {v3}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
     move-result v5
 
     if-nez v5, :cond_8
 
-    .line 131
+    .line 133
     invoke-static {p0, v3}, Lcom/pdt/grub/xposed/entry/XposedModuleEntry;->getPackageNameByPath(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v5
 
-    .line 132
+    .line 134
     sget-object v6, Lcom/pdt/grub/xposed/entry/XposedModuleEntry;->TAG:Ljava/lang/String;
 
     new-instance v7, Ljava/lang/StringBuilder;
@@ -720,20 +723,20 @@
 
     if-eqz v5, :cond_9
 
-    .line 134
+    .line 136
     invoke-virtual {v5}, Ljava/lang/String;->isEmpty()Z
 
     move-result v6
 
     if-eqz v6, :cond_a
 
-    .line 135
+    .line 137
     :cond_9
     invoke-static {v3}, Lcom/pdt/grub/xposed/entry/util/XpatchUtils;->strMd5(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v5
 
-    .line 138
+    .line 140
     :cond_a
     new-instance v6, Ljava/lang/StringBuilder;
 
@@ -751,14 +754,14 @@
 
     move-result-object v5
 
-    .line 141
+    .line 143
     invoke-static {}, Lcom/pdt/grub/xposed/entry/util/NativeLibraryHelperCompat;->is64bit()Z
 
     move-result v6
 
     if-eqz v6, :cond_b
 
-    .line 142
+    .line 144
     new-instance v6, Ljava/lang/StringBuilder;
 
     invoke-direct {v6}, Ljava/lang/StringBuilder;-><init>()V
@@ -775,7 +778,7 @@
 
     goto :goto_4
 
-    .line 144
+    .line 146
     :cond_b
     new-instance v6, Ljava/lang/StringBuilder;
 
@@ -791,11 +794,11 @@
 
     move-result-object v5
 
-    .line 147
+    .line 149
     :goto_4
     invoke-static {p0, v5, v3}, Lcom/pdt/grub/xposed/entry/util/PluginNativeLibExtractor;->copySoFileIfNeeded(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 149
+    .line 151
     invoke-virtual {p0}, Landroid/content/Context;->getApplicationInfo()Landroid/content/pm/ApplicationInfo;
 
     move-result-object v6
@@ -811,7 +814,7 @@
 .method private static initSELinux(Landroid/content/Context;)V
     .locals 0
 
-    .line 181
+    .line 183
     invoke-virtual {p0}, Landroid/content/Context;->getApplicationInfo()Landroid/content/pm/ApplicationInfo;
 
     move-result-object p0
@@ -835,14 +838,14 @@
         }
     .end annotation
 
-    .line 160
+    .line 162
     invoke-virtual {p0}, Landroid/content/Context;->getApplicationInfo()Landroid/content/pm/ApplicationInfo;
 
     move-result-object p0
 
     iget-object p0, p0, Landroid/content/pm/ApplicationInfo;->nativeLibraryDir:Ljava/lang/String;
 
-    .line 161
+    .line 163
     sget-object v0, Lcom/pdt/grub/xposed/entry/XposedModuleEntry;->TAG:Ljava/lang/String;
 
     new-instance v1, Ljava/lang/StringBuilder;
@@ -861,12 +864,12 @@
 
     invoke-static {v0, v1}, Lcom/pdt/grub/xposed/entry/util/XLog;->d(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 163
+    .line 165
     new-instance v0, Ljava/io/File;
 
     invoke-direct {v0, p0}, Ljava/io/File;-><init>(Ljava/lang/String;)V
 
-    .line 164
+    .line 166
     invoke-virtual {v0}, Ljava/io/File;->exists()Z
 
     move-result p0
@@ -875,7 +878,7 @@
 
     return-void
 
-    .line 168
+    .line 170
     :cond_0
     invoke-virtual {v0}, Ljava/io/File;->listFiles()[Ljava/io/File;
 
@@ -883,12 +886,12 @@
 
     if-eqz p0, :cond_2
 
-    .line 169
+    .line 171
     array-length v0, p0
 
     if-lez v0, :cond_2
 
-    .line 170
+    .line 172
     array-length v0, p0
 
     const/4 v1, 0x0
@@ -898,21 +901,21 @@
 
     aget-object v2, p0, v1
 
-    .line 171
+    .line 173
     invoke-virtual {v2}, Ljava/io/File;->getName()Ljava/lang/String;
 
     move-result-object v3
 
     const-string v4, "libxpatch_xp_module_"
 
-    .line 172
+    .line 174
     invoke-virtual {v3, v4}, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
 
     move-result v3
 
     if-eqz v3, :cond_1
 
-    .line 173
+    .line 175
     sget-object v3, Lcom/pdt/grub/xposed/entry/XposedModuleEntry;->TAG:Ljava/lang/String;
 
     new-instance v4, Ljava/lang/StringBuilder;
@@ -931,7 +934,7 @@
 
     invoke-static {v3, v4}, Lcom/pdt/grub/xposed/entry/util/XLog;->d(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 174
+    .line 176
     invoke-virtual {v2}, Ljava/io/File;->getAbsolutePath()Ljava/lang/String;
 
     move-result-object v2
@@ -952,7 +955,7 @@
 
     if-eqz p0, :cond_1
 
-    .line 328
+    .line 330
     invoke-interface {p0}, Ljava/util/Collection;->size()I
 
     move-result p0
@@ -986,41 +989,41 @@
         }
     .end annotation
 
-    .line 185
+    .line 187
     invoke-virtual {p0}, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
 
     move-result-object v0
 
-    .line 186
+    .line 188
     new-instance v1, Ljava/util/ArrayList;
 
     invoke-direct {v1}, Ljava/util/ArrayList;-><init>()V
 
     const/4 v2, 0x1
 
-    .line 189
+    .line 191
     invoke-static {v2}, Lcom/pdt/grub/xposed/entry/XposedModuleEntry;->loadPackageNameListFromFile(Z)Ljava/util/List;
 
     move-result-object v2
 
-    .line 190
+    .line 192
     new-instance v3, Ljava/util/ArrayList;
 
     invoke-direct {v3}, Ljava/util/ArrayList;-><init>()V
 
-    .line 192
+    .line 194
     invoke-static {}, Lcom/pdt/grub/xposed/entry/XposedModuleEntry;->configFileExist()Z
 
     move-result v4
 
     const/16 v5, 0x80
 
-    .line 194
+    .line 196
     invoke-virtual {v0, v5}, Landroid/content/pm/PackageManager;->getInstalledPackages(I)Ljava/util/List;
 
     move-result-object v0
 
-    .line 195
+    .line 197
     invoke-interface {v0}, Ljava/util/List;->iterator()Ljava/util/Iterator;
 
     move-result-object v0
@@ -1039,17 +1042,17 @@
 
     check-cast v5, Landroid/content/pm/PackageInfo;
 
-    .line 196
+    .line 198
     iget-object v6, v5, Landroid/content/pm/PackageInfo;->applicationInfo:Landroid/content/pm/ApplicationInfo;
 
-    .line 197
+    .line 199
     iget-boolean v7, v6, Landroid/content/pm/ApplicationInfo;->enabled:Z
 
     if-nez v7, :cond_1
 
     goto :goto_0
 
-    .line 199
+    .line 201
     :cond_1
     iget-object v7, v6, Landroid/content/pm/ApplicationInfo;->metaData:Landroid/os/Bundle;
 
@@ -1065,12 +1068,12 @@
 
     if-eqz v7, :cond_0
 
-    .line 200
+    .line 202
     iget-object v7, v5, Landroid/content/pm/PackageInfo;->applicationInfo:Landroid/content/pm/ApplicationInfo;
 
     iget-object v7, v7, Landroid/content/pm/ApplicationInfo;->publicSourceDir:Ljava/lang/String;
 
-    .line 201
+    .line 203
     invoke-virtual {p0}, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
 
     move-result-object v8
@@ -1085,19 +1088,19 @@
 
     move-result-object v8
 
-    .line 202
+    .line 204
     invoke-static {v7}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
     move-result v9
 
     if-eqz v9, :cond_2
 
-    .line 203
+    .line 205
     iget-object v7, v5, Landroid/content/pm/PackageInfo;->applicationInfo:Landroid/content/pm/ApplicationInfo;
 
     iget-object v7, v7, Landroid/content/pm/ApplicationInfo;->sourceDir:Ljava/lang/String;
 
-    .line 205
+    .line 207
     :cond_2
     invoke-static {v7}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
@@ -1111,14 +1114,14 @@
 
     iget-object v6, v6, Landroid/content/pm/ApplicationInfo;->packageName:Ljava/lang/String;
 
-    .line 206
+    .line 208
     invoke-interface {v2, v6}, Ljava/util/List;->contains(Ljava/lang/Object;)Z
 
     move-result v6
 
     if-eqz v6, :cond_4
 
-    .line 207
+    .line 209
     :cond_3
     sget-object v6, Lcom/pdt/grub/xposed/entry/XposedModuleEntry;->TAG:Ljava/lang/String;
 
@@ -1138,10 +1141,10 @@
 
     invoke-static {v6, v9}, Lcom/pdt/grub/xposed/entry/util/XLog;->d(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 208
+    .line 210
     invoke-interface {v1, v7}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
-    .line 210
+    .line 212
     :cond_4
     iget-object v5, v5, Landroid/content/pm/PackageInfo;->applicationInfo:Landroid/content/pm/ApplicationInfo;
 
@@ -1155,7 +1158,7 @@
 
     goto :goto_0
 
-    .line 216
+    .line 218
     :cond_5
     new-instance p0, Ljava/lang/Thread;
 
@@ -1165,7 +1168,7 @@
 
     invoke-direct {p0, v0}, Ljava/lang/Thread;-><init>(Ljava/lang/Runnable;)V
 
-    .line 232
+    .line 234
     invoke-virtual {p0}, Ljava/lang/Thread;->start()V
 
     return-object v1
@@ -1184,7 +1187,7 @@
 
     const-string v0, "#"
 
-    .line 238
+    .line 240
     new-instance v1, Ljava/io/File;
 
     sget-object v2, Lcom/pdt/grub/xposed/entry/XposedModuleEntry;->DIR_BASE:Ljava/lang/String;
@@ -1193,7 +1196,7 @@
 
     invoke-direct {v1, v2, v3}, Ljava/io/File;-><init>(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 239
+    .line 241
     invoke-virtual {v1}, Ljava/io/File;->exists()Z
 
     move-result v2
@@ -1204,7 +1207,7 @@
 
     return-object v3
 
-    .line 242
+    .line 244
     :cond_0
     invoke-virtual {v1}, Ljava/io/File;->getParentFile()Ljava/io/File;
 
@@ -1216,20 +1219,20 @@
 
     if-nez v2, :cond_1
 
-    .line 243
+    .line 245
     invoke-virtual {v1}, Ljava/io/File;->getParentFile()Ljava/io/File;
 
     move-result-object v2
 
     invoke-virtual {v2}, Ljava/io/File;->mkdirs()Z
 
-    .line 245
+    .line 247
     :cond_1
     new-instance v2, Ljava/util/ArrayList;
 
     invoke-direct {v2}, Ljava/util/ArrayList;-><init>()V
 
-    .line 250
+    .line 252
     :try_start_0
     new-instance v4, Ljava/io/FileInputStream;
 
@@ -1238,7 +1241,7 @@
     .catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_2
     .catchall {:try_start_0 .. :try_end_0} :catchall_1
 
-    .line 251
+    .line 253
     :try_start_1
     new-instance v1, Ljava/io/BufferedReader;
 
@@ -1251,7 +1254,7 @@
     .catch Ljava/io/IOException; {:try_start_1 .. :try_end_1} :catch_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 253
+    .line 255
     :cond_2
     :goto_0
     :try_start_2
@@ -1261,12 +1264,12 @@
 
     if-eqz v5, :cond_6
 
-    .line 254
+    .line 256
     invoke-virtual {v5}, Ljava/lang/String;->trim()Ljava/lang/String;
 
     move-result-object v5
 
-    .line 255
+    .line 257
     invoke-virtual {v5}, Ljava/lang/String;->isEmpty()Z
 
     move-result v6
@@ -1283,7 +1286,7 @@
 
     goto :goto_0
 
-    .line 259
+    .line 261
     :cond_3
     invoke-virtual {v5, v0}, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
 
@@ -1293,12 +1296,12 @@
 
     const/4 v6, 0x1
 
-    .line 260
+    .line 262
     invoke-virtual {v5, v6}, Ljava/lang/String;->substring(I)Ljava/lang/String;
 
     move-result-object v5
 
-    .line 262
+    .line 264
     :cond_4
     invoke-virtual {v5, v0}, Ljava/lang/String;->indexOf(Ljava/lang/String;)I
 
@@ -1308,12 +1311,12 @@
 
     const/4 v7, 0x0
 
-    .line 264
+    .line 266
     invoke-virtual {v5, v7, v6}, Ljava/lang/String;->substring(II)Ljava/lang/String;
 
     move-result-object v5
 
-    .line 266
+    .line 268
     :cond_5
     sget-object v6, Lcom/pdt/grub/xposed/entry/XposedModuleEntry;->TAG:Ljava/lang/String;
 
@@ -1333,7 +1336,7 @@
 
     invoke-static {v6, v7}, Lcom/pdt/grub/xposed/entry/util/XLog;->d(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 267
+    .line 269
     invoke-interface {v2, v5}, Ljava/util/List;->add(Ljava/lang/Object;)Z
     :try_end_2
     .catch Ljava/io/IOException; {:try_start_2 .. :try_end_2} :catch_0
@@ -1341,11 +1344,11 @@
 
     goto :goto_0
 
-    .line 274
+    .line 276
     :cond_6
     invoke-static {v4}, Lcom/pdt/grub/xposed/entry/XposedModuleEntry;->closeStream(Ljava/io/Closeable;)V
 
-    .line 275
+    .line 277
     invoke-static {v1}, Lcom/pdt/grub/xposed/entry/XposedModuleEntry;->closeStream(Ljava/io/Closeable;)V
 
     return-object v2
@@ -1383,17 +1386,17 @@
 
     move-object v4, v1
 
-    .line 271
+    .line 273
     :goto_1
     :try_start_3
     invoke-virtual {p0}, Ljava/io/IOException;->printStackTrace()V
     :try_end_3
     .catchall {:try_start_3 .. :try_end_3} :catchall_2
 
-    .line 274
+    .line 276
     invoke-static {v4}, Lcom/pdt/grub/xposed/entry/XposedModuleEntry;->closeStream(Ljava/io/Closeable;)V
 
-    .line 275
+    .line 277
     invoke-static {v1}, Lcom/pdt/grub/xposed/entry/XposedModuleEntry;->closeStream(Ljava/io/Closeable;)V
 
     return-object v3
@@ -1404,13 +1407,13 @@
     :goto_2
     move-object v3, v4
 
-    .line 274
+    .line 276
     :goto_3
     invoke-static {v3}, Lcom/pdt/grub/xposed/entry/XposedModuleEntry;->closeStream(Ljava/io/Closeable;)V
 
-    .line 275
+    .line 277
     invoke-static {v1}, Lcom/pdt/grub/xposed/entry/XposedModuleEntry;->closeStream(Ljava/io/Closeable;)V
 
-    .line 276
+    .line 278
     throw p0
 .end method

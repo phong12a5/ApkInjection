@@ -1,25 +1,25 @@
 Signature-Version: 1.0
 Created-By: Android Gradle 4.1.1
-SHA-256-Digest-Manifest: 2kz7HeQ686/Pr/pp5se5hfMUDxMetrtD/22i2c2JlZE=
+SHA-256-Digest-Manifest: pqXsm/ttV/Y2DiKprmQ4cBnFZ14m0J3Q6iW8Ap7YaXw=
 X-Android-APK-Signed: 2
 
 Name: AndroidManifest.xml
 SHA-256-Digest: AUbwppDo4eNhMJhr9sp33NzWWwRhWYKc30koqCM8Vtk=
 
 Name: classes.dex
-SHA-256-Digest: VKnpLTAnUf+6ot1xE4AK6RJX2zmhP3ht2W+arE+hGoA=
+SHA-256-Digest: Li+Fe3raLepPMfmY9SG177Wk0yrdpDiYwwoMsn+BzmE=
 
 Name: lib/arm64-v8a/libsandhook-native.so
-SHA-256-Digest: +rTfCyXEcIhAxdgLebJyDOCcvUEzi4VFm12tEljdg54=
+SHA-256-Digest: J2+vwWyG2W2ig4/ZBPdsDS6iMEeu4Pim1RK05xwShBQ=
 
 Name: lib/arm64-v8a/libsandhook.so
-SHA-256-Digest: zLR9W/kdwhAm4Z44plGACYjrg21TwYW2QlJj+Gw/fQA=
+SHA-256-Digest: vbcP4YyCTslvbf6zO/tuX/R5gf1mzQ09KPurjq1+LMo=
 
 Name: lib/armeabi-v7a/libsandhook-native.so
-SHA-256-Digest: w0gN17F+eu42NB2vVtejPKtE4TMA31cvcBN3AL7ldC0=
+SHA-256-Digest: WKnb25enxLqWGy2N+fyywRugdT9yI6ZhREbeHsCsCbw=
 
 Name: lib/armeabi-v7a/libsandhook.so
-SHA-256-Digest: FgJS0rRph0hJYYNCPW1mKeJJMJALQCHPpgziqJxua70=
+SHA-256-Digest: 9V6+kDFL+NBT4dSrazKK/Kh+niyNwDe+h8IXTYwInBE=
 
 Name: res/drawable-anydpi-v24/$ic_launcher_foreground__0.xml
 SHA-256-Digest: Yat2tcqeTsGLKA+Oj5R8gVE9H/Y5m6ZevzEOVY1JiVs=

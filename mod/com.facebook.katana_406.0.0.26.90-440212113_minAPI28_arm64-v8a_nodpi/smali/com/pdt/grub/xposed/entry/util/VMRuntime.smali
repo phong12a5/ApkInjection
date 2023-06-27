@@ -238,6 +238,8 @@
 
     check-cast v12, [Ljava/lang/reflect/Method;
 
+    check-cast v12, [Ljava/lang/reflect/Method;
+
     .line 40
     invoke-static {v1, v5, v12, v5, v13}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
 

@@ -1,4 +1,4 @@
-.class Lcom/pdt/grub/xposed/entry/XposedModuleEntry$1;
+.class final Lcom/pdt/grub/xposed/entry/XposedModuleEntry$1;
 .super Ljava/lang/Object;
 .source "XposedModuleEntry.java"
 
@@ -12,7 +12,7 @@
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
-    accessFlags = 0x0
+    accessFlags = 0x8
     name = null
 .end annotation
 
@@ -25,7 +25,7 @@
 .method constructor <init>(Ljava/util/List;)V
     .locals 0
 
-    .line 216
+    .line 218
     iput-object p1, p0, Lcom/pdt/grub/xposed/entry/XposedModuleEntry$1;->val$installedModuleListFinal:Ljava/util/List;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -40,25 +40,25 @@
 
     const/4 v0, 0x0
 
-    .line 219
+    .line 221
     invoke-static {v0}, Lcom/pdt/grub/xposed/entry/XposedModuleEntry;->access$000(Z)Ljava/util/List;
 
     move-result-object v0
 
     if-nez v0, :cond_0
 
-    .line 221
+    .line 223
     new-instance v0, Ljava/util/ArrayList;
 
     invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
 
-    .line 223
+    .line 225
     :cond_0
     new-instance v1, Ljava/util/ArrayList;
 
     invoke-direct {v1}, Ljava/util/ArrayList;-><init>()V
 
-    .line 224
+    .line 226
     iget-object v2, p0, Lcom/pdt/grub/xposed/entry/XposedModuleEntry$1;->val$installedModuleListFinal:Ljava/util/List;
 
     invoke-interface {v2}, Ljava/util/List;->iterator()Ljava/util/Iterator;
@@ -79,7 +79,7 @@
 
     check-cast v3, Landroid/util/Pair;
 
-    .line 225
+    .line 227
     iget-object v4, v3, Landroid/util/Pair;->first:Ljava/lang/Object;
 
     invoke-interface {v0, v4}, Ljava/util/List;->contains(Ljava/lang/Object;)Z
@@ -88,7 +88,7 @@
 
     if-nez v4, :cond_1
 
-    .line 226
+    .line 228
     invoke-static {}, Lcom/pdt/grub/xposed/entry/XposedModuleEntry;->access$100()Ljava/lang/String;
 
     move-result-object v4
@@ -109,12 +109,12 @@
 
     invoke-static {v4, v5}, Lcom/pdt/grub/xposed/entry/util/XLog;->d(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 227
+    .line 229
     invoke-interface {v1, v3}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
     goto :goto_0
 
-    .line 230
+    .line 232
     :cond_2
     invoke-static {v1}, Lcom/pdt/grub/xposed/entry/XposedModuleEntry;->access$200(Ljava/util/List;)V
 

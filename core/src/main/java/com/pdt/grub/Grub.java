@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.util.Log;
 
+import com.pdt.grub.device.VDeviceInfoChanger;
 import com.pdt.grub.device.VDeviceInfoHelper;
 import com.pdt.grub.device.VDeviceInfoManager;
 import com.pdt.grub.receiver.CommandReceiver;
@@ -20,7 +21,6 @@ public class Grub {
     public static void initialize() {
         Log.i(TAG, "initialize");
         XposedModuleEntry.init();
-        hookTest();
     }
 
     private static void registerHostCommand(Context context) {
@@ -31,53 +31,17 @@ public class Grub {
     }
 
     public static void hookTest() {
-        changeSysProps();
     }
 
-    public static void changeSysProps() {
-        try {
-            XposedBridge.hookAllMethods(Class.forName("android.os.SystemProperties"), "get", new XC_MethodHook() {
-                @Override
-                protected void afterHookedMethod(MethodHookParam param) throws Throwable {
-                    super.afterHookedMethod(param);
-//                    if(config.buildProp.containsKey((String) param.args[0])) {
-//                        param.setResult(config.buildProp.get((String) param.args[0]));
-//                        VLog.i("SystemProperties", "hooked-get " + param.args[0] + ": " + param.getResult());
-//                    } else if(config.hideSim &&
-//                            ("gsm.sim.operator.iso-country".equals(param.args[0]) ||
-//                                    "gsm.operator.alpha".equals(param.args[0]) ||
-//                                    "gsm.sim.operator.alpha".equals(param.args[0]) ||
-//                                    "gsm.operator.numeric".equals(param.args[0]) ||
-//                                    "gsm.sim.operator.numeric".equals(param.args[0]))) {
-//                        param.setResult("");
-//                        VLog.i("SystemProperties", "hooked-get " + param.args[0] + ": " + param.getResult());
-//                    } else {
-//                        VLog.i("SystemProperties", "nohooked-get " + param.args[0] + ": " + param.getResult());
-//                    }
-                    Log.i(TAG, "SystemProperties::get " + param.args[0] + ": " + param.getResult());
-
-                }
-            });
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        XposedBridge.hookAllMethods(System.class, "getProperty", new XC_MethodHook() {
-            @Override
-            protected void afterHookedMethod(MethodHookParam param) throws Throwable {
-                super.afterHookedMethod(param);
-//                if(config.buildProp.containsKey((String) param.args[0])) {
-//                    String ret = config.buildProp.get((String) param.args[0]);
-//                    param.setResult(Integer.parseInt(ret));
-//                    VLog.i("System", "hooked-getProperty " + param.args[0] + ": " + param.getResult());
-//                } if("http.agent".equals(param.args[0])) {
-//                    param.setResult(config.userAgent.substring(config.userAgent.indexOf("(") + 1, config.userAgent.indexOf(")")));
-//                    VLog.i("System", "hooked-getProperty " + param.args[0] + ": " + param.getResult());
-//                } else {
-//                    VLog.i("System", "nohook-getProperty " + param.args[0] + ": " + param.getResult());
-//                }
-                Log.i(TAG, "System::getProperty " + param.args[0] + ": " + param.getResult());
-            }
-        });
+    
+    public static void fakeDeviceInfo(Context context) {
+        VDeviceInfoManager.get().init(context);
+        VDeviceInfoChanger.changeBuildInfo(context);
+        VDeviceInfoChanger.changeSysProps();
+        VDeviceInfoChanger.changeWifiInfo();
+        VDeviceInfoChanger.changeTelephonyInfo();
+        VDeviceInfoChanger.changeSettins();
+        VDeviceInfoChanger.preventRuntime(context);
     }
+
 }

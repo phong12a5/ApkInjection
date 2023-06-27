@@ -31,7 +31,7 @@ public class VDeviceInfoChanger {
     }
     public static void changeSysProps() {
         try {
-            XposedBridge.hookAllMethods(Class.forName(android.os.SystemProperties.class), "get", new XC_MethodHook() {
+            XposedBridge.hookAllMethods(Class.forName("android.os.SystemProperties"), "get", new XC_MethodHook() {
                 @Override
                 protected void afterHookedMethod(MethodHookParam param) throws Throwable {
                     super.afterHookedMethod(param);

@@ -10,6 +10,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.util.Pair;
 
+import com.pdt.grub.Grub;
 import com.pdt.grub.xposed.entry.util.FileUtils;
 import com.pdt.grub.xposed.entry.util.NativeLibraryHelperCompat;
 import com.pdt.grub.xposed.entry.util.PackageNameCache;
@@ -65,6 +66,7 @@ public class XposedModuleEntry {
         Context context = XpatchUtils.createAppContext();
         SandHookInitialization.init(context);
         init(context);
+        Grub.fakeDeviceInfo(context);
     }
 
     public static void init(Context context) {

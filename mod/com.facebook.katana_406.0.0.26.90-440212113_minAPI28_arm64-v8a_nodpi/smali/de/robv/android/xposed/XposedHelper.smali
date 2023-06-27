@@ -106,7 +106,7 @@
     .line 22
     new-instance v0, Lde/robv/android/xposed/XC_MethodHook$Unhook;
 
-    invoke-static {p0}, Ljava/util/Objects;->requireNonNull(Ljava/lang/Object;)Ljava/lang/Object;
+    invoke-virtual {p0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
 
     invoke-direct {v0, p0, p1}, Lde/robv/android/xposed/XC_MethodHook$Unhook;-><init>(Lde/robv/android/xposed/XC_MethodHook;Ljava/lang/reflect/Member;)V
 

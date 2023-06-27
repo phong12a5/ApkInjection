@@ -1,4 +1,4 @@
-.class Lcom/pdt/grub/Grub$1;
+.class final Lcom/pdt/grub/Grub$1;
 .super Lde/robv/android/xposed/XC_MethodHook;
 .source "Grub.java"
 
@@ -9,7 +9,7 @@
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
-    accessFlags = 0x0
+    accessFlags = 0x8
     name = null
 .end annotation
 

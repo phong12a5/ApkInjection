@@ -13,7 +13,7 @@
 .method static constructor <clinit>()V
     .locals 1
 
-    .line 19
+    .line 20
     new-instance v0, Lcom/pdt/grub/receiver/CommandReceiver;
 
     invoke-direct {v0}, Lcom/pdt/grub/receiver/CommandReceiver;-><init>()V
@@ -26,61 +26,45 @@
 .method public constructor <init>()V
     .locals 0
 
-    .line 17
+    .line 18
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
 .end method
 
-.method public static changeSysProps()V
-    .locals 3
+.method public static fakeDeviceInfo(Landroid/content/Context;)V
+    .locals 1
 
-    :try_start_0
-    const-string v0, "android.os.SystemProperties"
-
-    .line 39
-    invoke-static {v0}, Ljava/lang/Class;->forName(Ljava/lang/String;)Ljava/lang/Class;
+    .line 38
+    invoke-static {}, Lcom/pdt/grub/device/VDeviceInfoManager;->get()Lcom/pdt/grub/device/VDeviceInfoManager;
 
     move-result-object v0
 
-    const-string v1, "get"
+    invoke-virtual {v0, p0}, Lcom/pdt/grub/device/VDeviceInfoManager;->init(Landroid/content/Context;)V
 
-    new-instance v2, Lcom/pdt/grub/Grub$1;
+    .line 39
+    invoke-static {p0}, Lcom/pdt/grub/device/VDeviceInfoChanger;->changeBuildInfo(Landroid/content/Context;)V
 
-    invoke-direct {v2}, Lcom/pdt/grub/Grub$1;-><init>()V
+    .line 40
+    invoke-static {}, Lcom/pdt/grub/device/VDeviceInfoChanger;->changeSysProps()V
 
-    invoke-static {v0, v1, v2}, Lde/robv/android/xposed/XposedBridge;->hookAllMethods(Ljava/lang/Class;Ljava/lang/String;Lde/robv/android/xposed/XC_MethodHook;)Ljava/util/Set;
-    :try_end_0
-    .catch Ljava/lang/ClassNotFoundException; {:try_start_0 .. :try_end_0} :catch_0
+    .line 41
+    invoke-static {}, Lcom/pdt/grub/device/VDeviceInfoChanger;->changeWifiInfo()V
 
-    goto :goto_0
+    .line 42
+    invoke-static {}, Lcom/pdt/grub/device/VDeviceInfoChanger;->changeTelephonyInfo()V
 
-    :catch_0
-    move-exception v0
+    .line 43
+    invoke-static {}, Lcom/pdt/grub/device/VDeviceInfoChanger;->changeSettins()V
 
-    .line 62
-    invoke-virtual {v0}, Ljava/lang/ClassNotFoundException;->printStackTrace()V
-
-    .line 65
-    :goto_0
-    const-class v0, Ljava/lang/System;
-
-    new-instance v1, Lcom/pdt/grub/Grub$2;
-
-    invoke-direct {v1}, Lcom/pdt/grub/Grub$2;-><init>()V
-
-    const-string v2, "getProperty"
-
-    invoke-static {v0, v2, v1}, Lde/robv/android/xposed/XposedBridge;->hookAllMethods(Ljava/lang/Class;Ljava/lang/String;Lde/robv/android/xposed/XC_MethodHook;)Ljava/util/Set;
+    .line 44
+    invoke-static {p0}, Lcom/pdt/grub/device/VDeviceInfoChanger;->preventRuntime(Landroid/content/Context;)V
 
     return-void
 .end method
 
 .method public static hookTest()V
     .locals 0
-
-    .line 34
-    invoke-static {}, Lcom/pdt/grub/Grub;->changeSysProps()V
 
     return-void
 .end method
@@ -92,14 +76,11 @@
 
     const-string v1, "initialize"
 
-    .line 21
+    .line 22
     invoke-static {v0, v1}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 22
-    invoke-static {}, Lcom/pdt/grub/xposed/entry/XposedModuleEntry;->init()V
-
     .line 23
-    invoke-static {}, Lcom/pdt/grub/Grub;->hookTest()V
+    invoke-static {}, Lcom/pdt/grub/xposed/entry/XposedModuleEntry;->init()V
 
     return-void
 .end method
