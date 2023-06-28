@@ -249,7 +249,7 @@ public class MainCommand extends BaseCommand {
         // copy smali
         mXpatchTasks.add(new CopyAndModifySmaliTask(unzipApkFilePath, deGrubPluginApkPath, applicationName));
 
-        //  copy xposed so and dex files into the unzipped apk
+        //  copy xposed so files into the unzipped apk
         mXpatchTasks.add(new SoAndDexCopyTask(unzipApkFilePath));
 
         //  compress all files into an apk and then sign it.
@@ -267,15 +267,15 @@ public class MainCommand extends BaseCommand {
         }
 
         // 5. delete all the build files that is useless now
-//        File unzipApkFile = new File(unzipApkFilePath);
-//        if (!keepBuildFiles && unzipApkFile.exists()) {
-//            FileUtils.deleteDir(unzipApkFile);
-//        }
-//
-//        File tempFile = new File(tempFilePath);
-//        if (!keepBuildFiles && tempFile.exists()) {
-//            tempFile.delete();
-//        }
+        File unzipApkFile = new File(unzipApkFilePath);
+        if (!keepBuildFiles && unzipApkFile.exists()) {
+            FileUtils.deleteDir(unzipApkFile);
+        }
+
+        File tempFile = new File(tempFilePath);
+        if (!keepBuildFiles && tempFile.exists()) {
+            tempFile.delete();
+        }
     }
 
     private void modifyManifestFile(String filePath, String dstFilePath, String originalApplicationName) {
