@@ -66,7 +66,6 @@ public class XposedModuleEntry {
         Context context = XpatchUtils.createAppContext();
         SandHookInitialization.init(context);
         init(context);
-        Grub.fakeDeviceInfo(context);
     }
 
     public static void init(Context context) {
