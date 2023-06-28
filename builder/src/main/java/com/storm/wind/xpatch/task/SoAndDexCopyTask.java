@@ -48,8 +48,8 @@ public class SoAndDexCopyTask implements Runnable {
         for (String libPath : existLibPathArray) {
             if (libPath != null && !libPath.isEmpty()) {
                 String apkSoFullPath = fullLibPath(libPath);
-                copyLibFile(apkSoFullPath,"assets/" +  libPath + SANDHOOK_SO_FILE_NAME);
-                copyLibFile(apkSoFullPath,"assets/" +  libPath + SANDHOOK_NATIVE_SO_FILE_NAME);
+                copyLibFile(apkSoFullPath,"assets/" +  libPath + SANDHOOK_SO_FILE_NAME, SANDHOOK_SO_FILE_NAME_WITH_SUFFIX);
+                copyLibFile(apkSoFullPath,"assets/" +  libPath + SANDHOOK_NATIVE_SO_FILE_NAME, SANDHOOK_NATIVE_SO_FILE_NAME_WITH_SUFFIX);
             }
         }
     }
@@ -59,15 +59,14 @@ public class SoAndDexCopyTask implements Runnable {
         return unzipApkFilePath + libPath.replace("/", File.separator);
     }
 
-    private void copyLibFile(String libFilePath, String srcSoPath) {
+    private void copyLibFile(String libFilePath, String srcSoPath, String fileName) {
         File apkSoParentFile = new File(libFilePath);
         if (!apkSoParentFile.exists()) {
             apkSoParentFile.mkdirs();
         }
 
         // do copy
-        FileUtils.copyFileFromJar(srcSoPath, new File(apkSoParentFile, SANDHOOK_SO_FILE_NAME_WITH_SUFFIX).getAbsolutePath());
-        FileUtils.copyFileFromJar(srcSoPath, new File(apkSoParentFile, SANDHOOK_NATIVE_SO_FILE_NAME_WITH_SUFFIX).getAbsolutePath());
+        FileUtils.copyFileFromJar(srcSoPath, new File(apkSoParentFile, fileName).getAbsolutePath());
     }
 
 
