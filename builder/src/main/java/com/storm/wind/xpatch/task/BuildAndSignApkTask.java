@@ -3,6 +3,7 @@ package com.storm.wind.xpatch.task;
 import com.android.apksigner.ApkSignerTool;
 import com.storm.wind.xpatch.util.FileUtils;
 import com.storm.wind.xpatch.util.ShellCmdUtil;
+
 import java.io.File;
 import java.util.ArrayList;
 
@@ -33,7 +34,7 @@ public class BuildAndSignApkTask implements Runnable {
 
         // 将文件压缩到当前apk文件的上一级目录上
         String unsignedApkPath = unzipApkFile.getParent() + File.separator + "unsigned.apk";
-        FileUtils.compressToZip(unzipApkFilePath, unsignedApkPath);
+        compileApk(unzipApkFilePath, unsignedApkPath);
 
         // 将签名文件复制从assets目录下复制出来
         String keyStoreFilePath = unzipApkFile.getParent() + File.separator + "keystore";
@@ -70,12 +71,12 @@ public class BuildAndSignApkTask implements Runnable {
         File signedApkFile = new File(signedApkPath);
         // delete unsigned apk file
         if (!keepUnsignedApkFile && unsignedApkFile.exists() && signedApkFile.exists() && signResult) {
-            unsignedApkFile.delete();
+//            unsignedApkFile.delete();
         }
 
         File unsign_zipaligned_file = new File(unsignedZipalignedApkPath);
         if (!keepUnsignedApkFile && unsign_zipaligned_file.exists() && signedApkFile.exists() && signResult) {
-            unsign_zipaligned_file.delete();
+//            unsign_zipaligned_file.delete();
         }
 
         File idsigFile = new File(signedApkPath + ".idsig");
@@ -88,6 +89,33 @@ public class BuildAndSignApkTask implements Runnable {
             keyStoreFile.delete();
         }
         System.out.println(" out put apk  :" + signedApkPath);
+    }
+
+    private void compileApk(String srcPath, String dstPath) {
+        long time = System.currentTimeMillis();
+
+        String apktool = (new File(srcPath)).getParent() + File.separator + "apktool.jar";
+        FileUtils.copyFileFromJar("assets/apktool/apktool.jar", apktool);
+        ShellCmdUtil.chmodNoException(apktool, ShellCmdUtil.FileMode.MODE_755);
+        StringBuilder signCmd = new StringBuilder("java -jar " + apktool);
+
+        signCmd.append(" b ")
+                .append(" " + srcPath + " ")
+                .append(" -f ")
+                .append(" -o " + dstPath + " ");
+        System.out.println("\n" + signCmd + "\n");
+        String result = null;
+        try {
+            result = ShellCmdUtil.execCmd(signCmd.toString(), null);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        File apktoolFile = new File(apktool);
+        if (apktoolFile.exists()) {
+            apktoolFile.delete();
+        }
+        System.out.println(" decompile grub_apk apk time is :" + ((System.currentTimeMillis() - time)) +
+                "s\n\n" + "  result=" + result);
     }
 
     private boolean signApk(String apkPath, String keyStorePath, String signedApkPath) {
@@ -171,18 +199,22 @@ public class BuildAndSignApkTask implements Runnable {
     private void zipalignApk(String inputApkPath, String outputApkPath) {
         long time = System.currentTimeMillis();
 
+        /*
         String os = System.getProperty("os.name");
         System.out.println(" The running os is " + os);
         String zipalignAssetPath = "assets/mac/zipalign";
         if (os.toLowerCase().startsWith("win")) {
             zipalignAssetPath = "assets/win/zipalign.exe";
+        } else if (os.toLowerCase().startsWith("linux")) {
+            zipalignAssetPath = "assets/linux/zipalign";
         }
 
 
         String zipalignPath = (new File(inputApkPath)).getParent() + File.separator + "zipalign";
         FileUtils.copyFileFromJar(zipalignAssetPath, zipalignPath);
         ShellCmdUtil.chmodNoException(zipalignPath, ShellCmdUtil.FileMode.MODE_755);
-        StringBuilder signCmd = new StringBuilder(zipalignPath + " ");
+         */
+        StringBuilder signCmd = new StringBuilder("zipalign");
 
         signCmd.append(" -f ")
                 .append(" -p ")
@@ -196,10 +228,7 @@ public class BuildAndSignApkTask implements Runnable {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        File zipalignFile = new File(zipalignPath);
-        if (zipalignFile.exists()) {
-            zipalignFile.delete();
-        }
+
         System.out.println(" zipalign apk time is :" + ((System.currentTimeMillis() - time)) +
                 "s\n\n" + "  result=" + result);
     }

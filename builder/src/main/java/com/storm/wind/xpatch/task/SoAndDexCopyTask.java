@@ -32,8 +32,7 @@ public class SoAndDexCopyTask implements Runnable {
 
     private boolean useWhaleHookFramework;
 
-    public SoAndDexCopyTask(int dexFileCount, String unzipApkFilePath,
-                            String[] xposedModuleArray, boolean useWhaleHookFramework) {
+    public SoAndDexCopyTask(String unzipApkFilePath) {
         this.dexFileCount = dexFileCount;
         this.unzipApkFilePath = unzipApkFilePath;
         this.xposedModuleArray = xposedModuleArray;

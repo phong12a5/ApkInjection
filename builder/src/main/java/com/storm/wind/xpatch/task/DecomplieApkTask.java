@@ -19,7 +19,7 @@ public class DecomplieApkTask implements Runnable{
         long time = System.currentTimeMillis();
 
         String apktool = (new File(outDir)).getParent() + File.separator + "apktool.jar";
-        FileUtils.copyFileFromJar("apktool/apktool.jar", apktool);
+        FileUtils.copyFileFromJar("assets/apktool/apktool.jar", apktool);
         ShellCmdUtil.chmodNoException(apktool, ShellCmdUtil.FileMode.MODE_755);
         StringBuilder signCmd = new StringBuilder("java -jar " + apktool);
 

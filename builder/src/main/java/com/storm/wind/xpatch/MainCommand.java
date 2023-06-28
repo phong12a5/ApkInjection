@@ -2,11 +2,12 @@ package com.storm.wind.xpatch;
 
 import com.storm.wind.xpatch.base.BaseCommand;
 import com.storm.wind.xpatch.task.BuildAndSignApkTask;
-import com.storm.wind.xpatch.task.CopySmaliTask;
+import com.storm.wind.xpatch.task.CopyAndModifySmaliTask;
 import com.storm.wind.xpatch.task.DecomplieApkTask;
 import com.storm.wind.xpatch.task.SaveApkSignatureTask;
 import com.storm.wind.xpatch.task.SoAndDexCopyTask;
 import com.storm.wind.xpatch.util.FileUtils;
+import com.storm.wind.xpatch.util.ManifestParser;
 import com.wind.meditor.core.FileProcesser;
 import com.wind.meditor.property.AttributeItem;
 import com.wind.meditor.property.ModificationProperty;
@@ -143,19 +144,16 @@ public class MainCommand extends BaseCommand {
 
         // 中间文件临时存储的位置
         String tempFilePath = outputApkFileParentPath + File.separator +
-                currentTimeStr() + "-tmp" + File.separator;
+                "tmp" + File.separator;
+        new File(tempFilePath).mkdirs();
 
         // apk文件解压的目录
         unzipApkFilePath = tempFilePath + apkFileName + "-" + UNZIP_APK_FILE_NAME + File.separator;
+        new File(unzipApkFilePath).mkdirs();
 
         if (showAllLogs) {
             System.out.println(" !!!!! outputApkFileParentPath  =  " + outputApkFileParentPath +
                     "\n unzipApkFilePath = " + unzipApkFilePath);
-        }
-
-        if (!disableCrackSignature) {
-            // save the apk original signature info, to support crack signature.
-            new SaveApkSignatureTask(apkPath, unzipApkFilePath).run();
         }
 
         // 先解压apk到指定目录下
@@ -163,17 +161,22 @@ public class MainCommand extends BaseCommand {
         new DecomplieApkTask(apkPath, unzipApkFilePath).run();
 
         if (showAllLogs) {
-            System.out.println("decomplie apk cost time:  " + (System.currentTimeMillis() - currentTime));
+            System.out.println("decompile target apk cost time:  " + (System.currentTimeMillis() - currentTime));
+        }
+
+        if (!disableCrackSignature) {
+            // save the apk original signature info, to support crack signature.
+            new SaveApkSignatureTask(apkPath, unzipApkFilePath).run();
         }
 
         // decomplie grub_plugin
         currentTime = System.currentTimeMillis();
         String grubPluginApkPath = tempFilePath + "grub_plugin.apk";
         String deGrubPluginApkPath = tempFilePath + "de_grub_plugin";
-        FileUtils.copyFileFromJar("apk/grub_plugin.apk", grubPluginApkPath);
+        FileUtils.copyFileFromJar("assets/apk/grub_plugin.apk", grubPluginApkPath);
         new DecomplieApkTask(grubPluginApkPath, deGrubPluginApkPath).run();
         if (showAllLogs) {
-            System.out.println("decomplie grub_pugin apk cost time:  " + (System.currentTimeMillis() - currentTime));
+            System.out.println("decompile grub_plugin apk cost time:  " + (System.currentTimeMillis() - currentTime));
         }
 
         // Get the dex count in the apk zip file
@@ -184,10 +187,10 @@ public class MainCommand extends BaseCommand {
             System.out.println(" --- dexFileCount = " + dexFileCount);
         }
 
-        String manifestFilePath = unzipApkFilePath + "AndroidManifest.xml";
-
+        */
         currentTime = System.currentTimeMillis();
 
+        String manifestFilePath = unzipApkFilePath + "AndroidManifest.xml";
         // parse the app main application full name from the manifest file
         ManifestParser.Pair pair = ManifestParser.parseManifestFile(manifestFilePath);
         String applicationName = null;
@@ -200,6 +203,7 @@ public class MainCommand extends BaseCommand {
             System.out.println(" Get the application name --> " + applicationName);
         }
 
+        /*
         // modify manifest
         File manifestFile = new File(manifestFilePath);
         String manifestFilePathNew = unzipApkFilePath  + "AndroidManifest" + "-" + currentTimeStr() + ".xml";
@@ -243,11 +247,10 @@ public class MainCommand extends BaseCommand {
          */
 
         // copy smali
-        mXpatchTasks.add(new CopySmaliTask());
+        mXpatchTasks.add(new CopyAndModifySmaliTask(unzipApkFilePath, deGrubPluginApkPath, applicationName));
 
         //  copy xposed so and dex files into the unzipped apk
-        mXpatchTasks.add(new SoAndDexCopyTask(dexFileCount, unzipApkFilePath, xposedModuleList.toArray(new String[0])
-                , useWhaleHookFramework));
+        mXpatchTasks.add(new SoAndDexCopyTask(unzipApkFilePath));
 
         //  compress all files into an apk and then sign it.
         mXpatchTasks.add(new BuildAndSignApkTask(keepBuildFiles, unzipApkFilePath, output, apkPath));
@@ -264,15 +267,15 @@ public class MainCommand extends BaseCommand {
         }
 
         // 5. delete all the build files that is useless now
-        File unzipApkFile = new File(unzipApkFilePath);
-        if (!keepBuildFiles && unzipApkFile.exists()) {
-            FileUtils.deleteDir(unzipApkFile);
-        }
-
-        File tempFile = new File(tempFilePath);
-        if (!keepBuildFiles && tempFile.exists()) {
-            tempFile.delete();
-        }
+//        File unzipApkFile = new File(unzipApkFilePath);
+//        if (!keepBuildFiles && unzipApkFile.exists()) {
+//            FileUtils.deleteDir(unzipApkFile);
+//        }
+//
+//        File tempFile = new File(tempFilePath);
+//        if (!keepBuildFiles && tempFile.exists()) {
+//            tempFile.delete();
+//        }
     }
 
     private void modifyManifestFile(String filePath, String dstFilePath, String originalApplicationName) {
