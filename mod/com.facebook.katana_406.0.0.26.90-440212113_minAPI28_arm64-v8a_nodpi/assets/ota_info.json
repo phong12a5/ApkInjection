@@ -1,9 +1,0 @@
-{
-   "version_code": "455160500",
-   "package": "com.facebook.ota",
-   "branch": "master",
-   "commit": "__dev__",
-   "build_date": 1678554728.43,
-   "prod_version_name": "405",
-   "ota_version_name": "407.ota.68"
-}
