@@ -4,6 +4,7 @@ import com.storm.wind.xpatch.base.BaseCommand;
 import com.storm.wind.xpatch.task.BuildAndSignApkTask;
 import com.storm.wind.xpatch.task.CopyAndModifySmaliTask;
 import com.storm.wind.xpatch.task.DecomplieApkTask;
+import com.storm.wind.xpatch.task.RemovePermissionsTask;
 import com.storm.wind.xpatch.task.SaveApkSignatureTask;
 import com.storm.wind.xpatch.task.SoAndDexCopyTask;
 import com.storm.wind.xpatch.util.FileUtils;
@@ -18,6 +19,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.jar.Manifest;
 import java.util.regex.Pattern;
 
 public class MainCommand extends BaseCommand {
@@ -203,14 +205,17 @@ public class MainCommand extends BaseCommand {
             System.out.println(" Get the application name --> " + applicationName);
         }
 
-        /*
         // modify manifest
         File manifestFile = new File(manifestFilePath);
         String manifestFilePathNew = unzipApkFilePath  + "AndroidManifest" + "-" + currentTimeStr() + ".xml";
         File manifestFileNew = new File(manifestFilePathNew);
         manifestFile.renameTo(manifestFileNew);
 
-        modifyManifestFile(manifestFilePathNew, manifestFilePath, applicationName);
+//        modifyManifestFile(manifestFilePathNew, manifestFilePath, applicationName);
+        List<String> removedPers = new ArrayList<>();
+        removedPers.add("android.permission.GET_ACCOUNTS");
+        removedPers.add("android.permission.GET_ACCOUNTS_PRIVILEGED");
+        new RemovePermissionsTask(manifestFilePath, manifestFilePathNew, removedPers).run();
 
         // new manifest may not exist
         if (manifestFile.exists() && manifestFile.length() > 0) {
@@ -218,6 +223,8 @@ public class MainCommand extends BaseCommand {
         } else {
             manifestFileNew.renameTo(manifestFile);
         }
+
+        /*
 
         // save original main application name to asset file
         if (isNotEmpty(applicationName)) {
