@@ -25,7 +25,6 @@ public class RemovePermissionsTask implements Runnable{
         File inputFile = new File(inf);
         File outputFile = new File(ouf);
         if(!inputFile.exists()){
-            System.out.println("输入文件不存在...");
             return;
         }
 
@@ -55,7 +54,7 @@ public class RemovePermissionsTask implements Runnable{
             XmlEditor.removeTag("uses-permission", permssion);
         }
 
-        //写文件
+        //写锟侥硷拷
         if(!outputFile.exists()){
             outputFile.delete();
         }

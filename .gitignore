@@ -15,7 +15,7 @@
 .cxx
 local.properties
 
-
+builder/src/main/assets/apk/grub_plugin.apk
 app/release/app-release.apk
 com.pdt.grub
 modified_apk

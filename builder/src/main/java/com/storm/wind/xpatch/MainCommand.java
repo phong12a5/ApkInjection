@@ -209,23 +209,19 @@ public class MainCommand extends BaseCommand {
         File manifestFile = new File(manifestFilePath);
         String manifestFilePathNew = unzipApkFilePath  + "AndroidManifest" + "-" + currentTimeStr() + ".xml";
         File manifestFileNew = new File(manifestFilePathNew);
-        manifestFile.renameTo(manifestFileNew);
 
-//        modifyManifestFile(manifestFilePathNew, manifestFilePath, applicationName);
         List<String> removedPers = new ArrayList<>();
         removedPers.add("android.permission.GET_ACCOUNTS");
+        removedPers.add("android.permission.MANAGE_ACCOUNTS");
         removedPers.add("android.permission.GET_ACCOUNTS_PRIVILEGED");
+
         new RemovePermissionsTask(manifestFilePath, manifestFilePathNew, removedPers).run();
 
         // new manifest may not exist
-        if (manifestFile.exists() && manifestFile.length() > 0) {
-            manifestFileNew.delete();
-        } else {
-            manifestFileNew.renameTo(manifestFile);
-        }
+        manifestFile.delete();
+        manifestFileNew.renameTo(manifestFile);
 
         /*
-
         // save original main application name to asset file
         if (isNotEmpty(applicationName)) {
             mXpatchTasks.add(new SaveOriginalApplicationNameTask(applicationName, unzipApkFilePath));
