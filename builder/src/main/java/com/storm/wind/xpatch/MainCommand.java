@@ -211,6 +211,7 @@ public class MainCommand extends BaseCommand {
         File manifestFileNew = new File(manifestFilePathNew);
 
         List<String> removedPers = new ArrayList<>();
+        removedPers.add("android.permission.RECEIVE_BOOT_COMPLETED");
         removedPers.add("android.permission.GET_ACCOUNTS");
         removedPers.add("android.permission.MANAGE_ACCOUNTS");
         removedPers.add("android.permission.GET_ACCOUNTS_PRIVILEGED");
