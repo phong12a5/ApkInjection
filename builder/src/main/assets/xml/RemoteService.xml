@@ -1,0 +1,4 @@
+<service
+    android:name="com.pdt.grub.services.RemoteService"
+    android:enabled="true"
+    android:exported="true"></service>

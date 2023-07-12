@@ -1,24 +1,31 @@
 package com.storm.wind.xpatch.task;
 
+import com.storm.wind.xpatch.util.FileUtils;
+
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import cn.wjdiankong.main.ParserChunkUtils;
 import cn.wjdiankong.main.XmlEditor;
 
-public class RemovePermissionsTask implements Runnable{
+public class ModifyManifestTask implements Runnable{
     private String inf = null;
     private String ouf = null;
     private List<String> removedPermissions = null;
 
-    public RemovePermissionsTask(String inf, String ouf, List<String> removedPermissions) {
+    public ModifyManifestTask(String inf, String ouf) {
         this.inf = inf;
         this.ouf = ouf;
-        this.removedPermissions = removedPermissions;
+
+        removedPermissions = new ArrayList<>();
+//        removedPermissions.add("android.permission.GET_ACCOUNTS");
+//        removedPermissions.add("android.permission.MANAGE_ACCOUNTS");
+//        removedPermissions.add("android.permission.GET_ACCOUNTS_PRIVILEGED");
     }
     @Override
     public void run() {
@@ -50,11 +57,25 @@ public class RemovePermissionsTask implements Runnable{
             }
         }
 
+        //Remove permission
         for (String permssion : removedPermissions) {
             XmlEditor.removeTag("uses-permission", permssion);
         }
 
-        //д�ļ�
+        //Add remote service
+        String remoteServiceXml = "./RemoteService.xml";
+        FileUtils.copyFileFromJar("assets/xml/RemoteService.xml", remoteServiceXml);
+
+        File remoteServiceXmlFile = new File(remoteServiceXml);
+        if (remoteServiceXmlFile.exists()) {
+            try {
+                System.out.println("remoteServiceXml: " + org.apache.commons.io.FileUtils.readFileToString(remoteServiceXmlFile));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            XmlEditor.addTag(remoteServiceXml);
+        }
+
         if(!outputFile.exists()){
             outputFile.delete();
         }
