@@ -9,5 +9,5 @@ interface IRemoteService {
      * Demonstrates some basic types that you can use as parameters
      * and return values in AIDL.
      */
-    void call(in String command, in Bundle params);
+    boolean call(in String command, in Bundle params);
 }

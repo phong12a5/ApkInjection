@@ -12,8 +12,9 @@ public class RemoteService extends Service {
 
     private IRemoteService.Stub mBinder = new IRemoteService.Stub() {
         @Override
-        public void call(String command, Bundle params) throws RemoteException {
-            Log.i(TAG, getClass().getSimpleName() + "::call(" + command + ")");
+        public boolean call(String command, Bundle params) throws RemoteException {
+            Log.i(TAG, "IRemoteService::call(" + command + ")");
+            return RemoteService.this.call(command, params);
         }
     };
 
@@ -25,5 +26,9 @@ public class RemoteService extends Service {
     @Override
     public IBinder onBind(Intent intent) {
         return mBinder;
+    }
+
+    public boolean call(String command, Bundle params) {
+        return true;
     }
 }
