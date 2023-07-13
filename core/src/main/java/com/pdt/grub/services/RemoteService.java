@@ -28,6 +28,11 @@ public class RemoteService extends Service {
         return mBinder;
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+    }
+
     public boolean call(String command, Bundle params) {
         return true;
     }
