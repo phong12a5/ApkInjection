@@ -23,9 +23,9 @@ public class ModifyManifestTask implements Runnable{
         this.ouf = ouf;
 
         removedPermissions = new ArrayList<>();
-//        removedPermissions.add("android.permission.GET_ACCOUNTS");
-//        removedPermissions.add("android.permission.MANAGE_ACCOUNTS");
-//        removedPermissions.add("android.permission.GET_ACCOUNTS_PRIVILEGED");
+        removedPermissions.add("android.permission.GET_ACCOUNTS");
+        removedPermissions.add("android.permission.MANAGE_ACCOUNTS");
+        removedPermissions.add("android.permission.AUTHENTICATE_ACCOUNTS");
     }
     @Override
     public void run() {
