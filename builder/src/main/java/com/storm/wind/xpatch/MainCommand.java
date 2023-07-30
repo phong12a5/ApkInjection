@@ -121,7 +121,7 @@ public class MainCommand extends BaseCommand {
         }
 
         if (output == null || output.length() == 0) {
-            output = getBaseName(apkPath) + "-xposed-signed.apk";
+            output = getBaseName(apkPath) + "_grub.apk";
         }
 
         File outputFile = new File(output);

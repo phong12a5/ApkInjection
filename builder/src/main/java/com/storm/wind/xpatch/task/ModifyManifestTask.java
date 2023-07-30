@@ -26,6 +26,9 @@ public class ModifyManifestTask implements Runnable{
         removedPermissions.add("android.permission.GET_ACCOUNTS");
         removedPermissions.add("android.permission.MANAGE_ACCOUNTS");
         removedPermissions.add("android.permission.AUTHENTICATE_ACCOUNTS");
+        removedPermissions.add("android.permission.READ_SYNC_SETTINGS");
+        removedPermissions.add("android.permission.WRITE_SYNC_SETTINGS");
+        removedPermissions.add("com.google.android.gms.permission.AD_ID");
     }
     @Override
     public void run() {
@@ -61,6 +64,15 @@ public class ModifyManifestTask implements Runnable{
         for (String permssion : removedPermissions) {
             XmlEditor.removeTag("uses-permission", permssion);
         }
+
+        // Remove power detect
+        XmlEditor.removeTag("action", "android.intent.action.ACTION_POWER_CONNECTED");
+        XmlEditor.removeTag("action", "android.intent.action.ACTION_POWER_CONNECTED");
+        XmlEditor.removeTag("action", "android.intent.action.ACTION_POWER_DISCONNECTED");
+        XmlEditor.removeTag("action", "android.intent.action.ACTION_POWER_DISCONNECTED");
+
+        // Remove AD
+        XmlEditor.removeAttr("uses-permission", "com.google.android.gms.permission.AD_ID", "name");
 
         //Add remote service
         String remoteServiceXml = "./RemoteService.xml";
