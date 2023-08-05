@@ -23,11 +23,11 @@ public class ModifyManifestTask implements Runnable{
         this.ouf = ouf;
 
         removedPermissions = new ArrayList<>();
-        removedPermissions.add("android.permission.GET_ACCOUNTS");
-        removedPermissions.add("android.permission.MANAGE_ACCOUNTS");
-        removedPermissions.add("android.permission.AUTHENTICATE_ACCOUNTS");
-        removedPermissions.add("android.permission.READ_SYNC_SETTINGS");
-        removedPermissions.add("android.permission.WRITE_SYNC_SETTINGS");
+//        removedPermissions.add("android.permission.GET_ACCOUNTS");
+//        removedPermissions.add("android.permission.MANAGE_ACCOUNTS");
+//        removedPermissions.add("android.permission.AUTHENTICATE_ACCOUNTS");
+//        removedPermissions.add("android.permission.READ_SYNC_SETTINGS");
+//        removedPermissions.add("android.permission.WRITE_SYNC_SETTINGS");
         removedPermissions.add("com.google.android.gms.permission.AD_ID");
     }
     @Override
