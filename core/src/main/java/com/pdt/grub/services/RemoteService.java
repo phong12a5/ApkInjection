@@ -4,6 +4,7 @@ import android.app.Service;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.os.Parcel;
 import android.os.RemoteException;
 import android.util.Log;
 
@@ -16,11 +17,22 @@ public class RemoteService extends Service {
             Log.i(TAG, "IRemoteService::call(" + command + ")");
             return RemoteService.this.call(command, params);
         }
+
+        @Override
+        public byte[] callGetBytes(String command, Bundle params) throws RemoteException {
+            Log.i(TAG, "IRemoteService::callGetBytes(" + command + ")");
+            return RemoteService.this.callGetBytes(command, params);
+        }
     };
 
         @Override
     public void onCreate() {
         super.onCreate();
+    }
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        return super.onStartCommand(intent, flags, startId);
     }
 
     @Override
@@ -35,5 +47,9 @@ public class RemoteService extends Service {
 
     public boolean call(String command, Bundle params) {
         return true;
+    }
+
+    public byte[] callGetBytes(String command, Bundle params) {
+        return new byte[0];
     }
 }

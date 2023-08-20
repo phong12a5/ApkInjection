@@ -28,6 +28,7 @@ public class ModifyManifestTask implements Runnable{
 //        removedPermissions.add("android.permission.AUTHENTICATE_ACCOUNTS");
 //        removedPermissions.add("android.permission.READ_SYNC_SETTINGS");
 //        removedPermissions.add("android.permission.WRITE_SYNC_SETTINGS");
+        removedPermissions.add("android.permission.RECEIVE_BOOT_COMPLETED");
         removedPermissions.add("com.google.android.gms.permission.AD_ID");
     }
     @Override

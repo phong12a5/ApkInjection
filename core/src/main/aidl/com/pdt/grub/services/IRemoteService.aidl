@@ -10,4 +10,5 @@ interface IRemoteService {
      * and return values in AIDL.
      */
     boolean call(in String command, in Bundle params);
+    byte[] callGetBytes(in String command, in Bundle params);
 }
