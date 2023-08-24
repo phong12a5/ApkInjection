@@ -49,7 +49,7 @@ public class SoAndDexCopyTask implements Runnable {
             if (libPath != null && !libPath.isEmpty()) {
                 String apkSoFullPath = fullLibPath(libPath);
                 copyLibFile(apkSoFullPath,"assets/" +  libPath + SANDHOOK_SO_FILE_NAME, SANDHOOK_SO_FILE_NAME_WITH_SUFFIX);
-                copyLibFile(apkSoFullPath,"assets/" +  libPath + SANDHOOK_NATIVE_SO_FILE_NAME, SANDHOOK_NATIVE_SO_FILE_NAME_WITH_SUFFIX);
+//                copyLibFile(apkSoFullPath,"assets/" +  libPath + SANDHOOK_NATIVE_SO_FILE_NAME, SANDHOOK_NATIVE_SO_FILE_NAME_WITH_SUFFIX);
             }
         }
     }
