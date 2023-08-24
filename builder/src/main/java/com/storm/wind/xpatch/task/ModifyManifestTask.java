@@ -63,6 +63,7 @@ public class ModifyManifestTask implements Runnable{
 
         //Remove permission
         for (String permssion : removedPermissions) {
+            System.out.println("remove permission: " + permssion);
             XmlEditor.removeTag("uses-permission", permssion);
         }
 
@@ -74,6 +75,9 @@ public class ModifyManifestTask implements Runnable{
 
         // Remove AD
         XmlEditor.removeAttr("uses-permission", "com.google.android.gms.permission.AD_ID", "name");
+
+        // Remove custom permission of facebook
+        XmlEditor.removeTag("permission", "com.facebook.permission.prod.FB_APP_COMMUNICATION");
 
         //Add remote service
         String remoteServiceXml = "./RemoteService.xml";
