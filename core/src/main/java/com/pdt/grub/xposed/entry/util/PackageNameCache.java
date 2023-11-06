@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 
+import com.pdt.grub.PLog;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -46,7 +48,7 @@ public class PackageNameCache {
         PackageManager pm = mContext.getPackageManager();
         long startTime = System.currentTimeMillis();
         PackageInfo info = pm.getPackageArchiveInfo(apkPath, PackageManager.GET_ACTIVITIES);
-        XLog.d(TAG, "Get package name time ->  " + (System.currentTimeMillis() - startTime)
+        PLog.d(TAG, "Get package name time ->  " + (System.currentTimeMillis() - startTime)
                 + " apkPath -> " + apkPath);
         if (info != null) {
             packageName = info.packageName;

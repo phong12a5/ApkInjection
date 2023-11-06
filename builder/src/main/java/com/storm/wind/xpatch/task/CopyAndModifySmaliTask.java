@@ -30,21 +30,34 @@ public class CopyAndModifySmaliTask implements Runnable {
             return;
         }
         try {
-            FileUtils.copyDirectory(deGrubPluginSmali, targetSmali);
-            modifySmali(targetSmali);
+            int smailDirCount = 0;
+            String targetSmalidir = "smali";
+            boolean modified = false;
+            for (File child : new File(unzipApkFilePath).listFiles()) {
+                if(child != null && child.getName().startsWith("smali")) {
+                    smailDirCount++;
+                    modifySmali(child);
+                    if(!modified && modifySmali(child)) {
+                        modified = true;
+                    }
+                }
+            }
+            if (smailDirCount > 1) {
+                targetSmalidir = "smali_classes" + String.valueOf(smailDirCount + 1);
+            }
+            System.out.println("targetSmalidir: " + targetSmalidir);
+            File target = new File(unzipApkFilePath, targetSmalidir);
+            target.mkdirs();
+            FileUtils.copyDirectory(deGrubPluginSmali, target);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    private void modifySmali(File smaliDir) {
+    private boolean modifySmali(File smaliDir) {
         File applicationClass = findClass(smaliDir, applicationName);
         System.out.println("applicationClass:" + applicationClass);
-        if (applicationClass == null) {
-            for (StackTraceElement ste : Thread.currentThread().getStackTrace()) {
-                System.out.println(ste + "\n");
-            }
-        } else {
+        if (applicationClass != null) {
             // Found application class;
             boolean found_clinit = false;
             String content = null;
@@ -60,30 +73,50 @@ public class CopyAndModifySmaliTask implements Runnable {
                 String line;
                 content = "";
                 boolean previousIsClint = false;
+
+                String correctClassName = applicationName.replace('.', '/');
+                if (!correctClassName.startsWith("L")) {
+                    correctClassName = "L" + correctClassName;
+                }
+
                 while ((line = br.readLine()) != null) {
                     // process the line.
                     content += (line + "\n");
-                    if (line.contains("# direct methods") && !found_clinit) {
-                        content += (".method static constructor <clinit>()V\n" +
+                    if (line.contains("# static fields")) {
+                        content += (".field public static final inittialzied:Z\n");
+                    } else if (line.contains("# direct methods") && !found_clinit) {
+                        content += String.format(".method static constructor <clinit>()V\n" +
                                 "    .locals 0\n" +
                                 "\n" +
                                 "    .line 9\n" +
-                                "    invoke-static {}, Lcom/pdt/grub/Grub;->initialize()V\n" +
+                                "    invoke-static {}, Lcom/pdt/grub/Grub;->initialize()Z\n" +
+                                "\n" +
+                                "    move-result v0\n" +
+                                "\n" +
+                                "    sput-boolean v0, %s;->inittialzied:Z\n" +
                                 "\n" +
                                 "    return-void\n" +
-                                ".end method\n");
+                                ".end method\n", correctClassName);
                     } else if (found_clinit && line.contains("constructor <clinit>")) {
                         previousIsClint = true;
                     } else if (previousIsClint) {
-                        content +=   "    invoke-static {}, Lcom/pdt/grub/Grub;->initialize()V\n";
+                        content +=   String.format("    invoke-static {}, Lcom/pdt/grub/Grub;->initialize()Z\n" +
+                                "\n" +
+                                "    move-result v0\n" +
+                                "\n" +
+                                "    sput-boolean v0, %s;->inittialzied:Z\n" +
+                                "\n", correctClassName);
+                        previousIsClint = false;
                     }
                 }
 
                 FileUtils.writeStringToFile(applicationClass, content);
+                return true;
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
+        return false;
     }
 
     private File findClass(File smaliDir, String className) {

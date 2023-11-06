@@ -3,7 +3,7 @@ package com.pdt.grub.xposed.entry.util;
 import android.app.ActivityManager;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
-import android.util.Log;
+import com.pdt.grub.PLog;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -77,7 +77,7 @@ public class XpatchUtils {
             ActivityManager mActivityManager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
             for (ActivityManager.RunningAppProcessInfo appProcess : mActivityManager.getRunningAppProcesses()) {
                 if (appProcess.pid == pid) {
-                    Log.d("Process", "processName = " + appProcess.processName);
+                    PLog.d("Process", "processName = " + appProcess.processName);
                     sCurProcessName = appProcess.processName;
                     return sCurProcessName;
                 }
@@ -101,7 +101,7 @@ public class XpatchUtils {
             while ((c = cmdlineReader.read()) > 0) {
                 processName.append((char) c);
             }
-            Log.d("Process", "get processName = " + processName.toString());
+            PLog.d("Process", "get processName = " + processName.toString());
             return processName.toString();
         } catch (Throwable e) {
             // ignore

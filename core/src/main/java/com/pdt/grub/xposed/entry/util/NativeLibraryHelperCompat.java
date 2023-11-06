@@ -3,7 +3,7 @@ package com.pdt.grub.xposed.entry.util;
 import android.annotation.TargetApi;
 import android.os.Build;
 import android.os.Process;
-import android.util.Log;
+import com.pdt.grub.PLog;
 
 import java.io.File;
 import java.util.Collections;
@@ -17,7 +17,7 @@ public class NativeLibraryHelperCompat {
     private static final String TAG = "NativeLibraryHelper";
 
     public static int copyNativeBinaries(File apkFile, File sharedLibraryDir) {
-        Log.i(TAG, " copyNativeBinaries  !!! apkFile = " + apkFile.getAbsolutePath() + " sharedLibraryDir = " + sharedLibraryDir.getAbsolutePath());
+        PLog.i(TAG, " copyNativeBinaries  !!! apkFile = " + apkFile.getAbsolutePath() + " sharedLibraryDir = " + sharedLibraryDir.getAbsolutePath());
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             return copyNativeBinariesAfterL(apkFile, sharedLibraryDir);
         } else {
@@ -78,16 +78,16 @@ public class NativeLibraryHelperCompat {
                     }
                 }
             }
-            Log.i(TAG, " is64Bit=" + is64Bit + " abi = " + abi + " abiSet = " + abiSet + " sharedLibraryDir =" + sharedLibraryDir);
+            PLog.i(TAG, " is64Bit=" + is64Bit + " abi = " + abi + " abiSet = " + abiSet + " sharedLibraryDir =" + sharedLibraryDir);
             if (abi == null) {
-                Log.e(TAG, "Not match any abi." + apkFile.getAbsolutePath());
+                PLog.e(TAG, "Not match any abi." + apkFile.getAbsolutePath());
                 return -1;
             }
             int result = (int) ReflectUtils.callMethod(className,
                     null,
                     "copyNativeBinaries",
                     handle, sharedLibraryDir, abi);
-            Log.i(TAG, "copyNativeBinaries result = " + result + " apkFile path = " + apkFile.getAbsolutePath());
+            PLog.i(TAG, "copyNativeBinaries result = " + result + " apkFile path = " + apkFile.getAbsolutePath());
             return result;
         } catch (Exception e) {
             e.printStackTrace();

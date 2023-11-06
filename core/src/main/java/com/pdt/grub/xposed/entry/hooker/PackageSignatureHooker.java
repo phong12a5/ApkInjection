@@ -5,7 +5,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.os.Build;
-import android.util.Log;
+import com.pdt.grub.PLog;
 
 import com.pdt.grub.xposed.entry.XposedModuleEntry;
 import com.pdt.grub.xposed.entry.util.FileUtils;
@@ -29,7 +29,7 @@ public class PackageSignatureHooker implements IXposedHookLoadPackage {
 
         Context context = XposedModuleEntry.getAppContext();
         final String originalSignature = getOriginalSignatureFromAsset(context);
-        Log.d("PackageSignatureHooker", "Get the original signature --> " + originalSignature);
+        PLog.d("PackageSignatureHooker", "Get the original signature --> " + originalSignature);
         if (originalSignature == null || originalSignature.isEmpty()) {
             return;
         }
@@ -50,7 +50,7 @@ public class PackageSignatureHooker implements IXposedHookLoadPackage {
                         try {
                             int flag = (int) param.args[1];
                             PackageInfo packageInfo = (PackageInfo) param.getResult();
-                            Log.d("PackageSignatureHooker", "Get flag " + flag + " packageInfo =" +
+                            PLog.d("PackageSignatureHooker", "Get flag " + flag + " packageInfo =" +
                                     packageInfo);
 
                             if (PackageManager.GET_SIGNATURES == flag) {
@@ -63,7 +63,7 @@ public class PackageSignatureHooker implements IXposedHookLoadPackage {
 
                                 //  先获取这个方法返回的结果
                                 if (packageInfo.signatures != null && packageInfo.signatures.length > 0) {
-                                    Log.d("PackageSignatureHooker", "ackageInfo.signatures " + packageInfo.signatures
+                                    PLog.d("PackageSignatureHooker", "ackageInfo.signatures " + packageInfo.signatures
                                             + " packageInfo =" +
                                             packageInfo);
                                     // 替换结果里的签名信息
@@ -88,7 +88,7 @@ public class PackageSignatureHooker implements IXposedHookLoadPackage {
                             param.setResult(packageInfo);
                         } catch (Throwable e) {
                             e.printStackTrace();
-                            Log.e("PackageSignatureHooker", "Get the original signature  " +
+                            PLog.e("PackageSignatureHooker", "Get the original signature  " +
                                     " failed !!!!!!!! ", e);
                         }
                     }
@@ -127,7 +127,7 @@ public class PackageSignatureHooker implements IXposedHookLoadPackage {
             mPmField.setAccessible(true);
             mPmField.set(pm, proxy);
         } catch (Exception e) {
-            Log.e("PackageSignatureHooker", " hookSignatureByProxy failed !!", e);
+            PLog.e("PackageSignatureHooker", " hookSignatureByProxy failed !!", e);
         }
     }
 
@@ -182,7 +182,7 @@ public class PackageSignatureHooker implements IXposedHookLoadPackage {
                         return packageInfo;
                     }
                 } catch (Exception e) {
-                    Log.e("PackageSignatureHooker", " invoke PackageManager getPackageInfo failed !!", e);
+                    PLog.e("PackageSignatureHooker", " invoke PackageManager getPackageInfo failed !!", e);
                     e.printStackTrace();
                 }
             }

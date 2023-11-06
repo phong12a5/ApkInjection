@@ -2,9 +2,9 @@ package com.pdt.grub.xposed.entry;
 
 import android.annotation.SuppressLint;
 import android.content.pm.ApplicationInfo;
-import android.util.Log;
+import com.pdt.grub.PLog;
 
-import com.pdt.grub.xposed.entry.util.XLog;
+import com.pdt.grub.PLog;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -28,17 +28,17 @@ public class XposedModuleLoader {
     public static boolean loadModule(final String moduleApkPath, String moduleOdexDir, String moduleLibPath,
                                  final ApplicationInfo currentApplicationInfo, ClassLoader appClassLoader) {
 
-        XLog.i(TAG, "Loading modules from " + moduleApkPath);
+        PLog.i(TAG, "Loading modules from " + moduleApkPath);
 
         if (!new File(moduleApkPath).exists()) {
-            Log.e(TAG, moduleApkPath + " does not exist");
+            PLog.e(TAG, moduleApkPath + " does not exist");
             return false;
         }
 
         ClassLoader mcl = new DexClassLoader(moduleApkPath, moduleOdexDir, moduleLibPath, appClassLoader);
         InputStream is = mcl.getResourceAsStream("assets/xposed_init");
         if (is == null) {
-            Log.i(TAG, "assets/xposed_init not found in the APK");
+            PLog.i(TAG, "assets/xposed_init not found in the APK");
             return false;
         }
 
@@ -51,14 +51,14 @@ public class XposedModuleLoader {
                     continue;
 
                 try {
-                    XLog.i(TAG, "  Loading class " + moduleClassName);
+                    PLog.i(TAG, "  Loading class " + moduleClassName);
                     Class<?> moduleClass = mcl.loadClass(moduleClassName);
 
                     if (!XposedHelper.isIXposedMod(moduleClass)) {
-                        Log.i(TAG, "    This class doesn't implement any sub-interface of IXposedMod, skipping it");
+                        PLog.i(TAG, "    This class doesn't implement any sub-interface of IXposedMod, skipping it");
                         continue;
                     } else if (IXposedHookInitPackageResources.class.isAssignableFrom(moduleClass)) {
-                        Log.i(TAG, "    This class requires resource-related hooks (which are disabled), skipping it.");
+                        PLog.i(TAG, "    This class requires resource-related hooks (which are disabled), skipping it.");
                         continue;
                     }
 
@@ -87,11 +87,11 @@ public class XposedModuleLoader {
                     }
 
                 } catch (Throwable t) {
-                    Log.e(TAG, " error ", t);
+                    PLog.e(TAG, " error ", t);
                 }
             }
         } catch (IOException e) {
-            Log.e(TAG, " error ", e);
+            PLog.e(TAG, " error ", e);
         } finally {
             try {
                 is.close();

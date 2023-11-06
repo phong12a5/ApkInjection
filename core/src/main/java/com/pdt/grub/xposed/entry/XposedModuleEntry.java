@@ -7,16 +7,16 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Environment;
 import android.text.TextUtils;
-import android.util.Log;
 import android.util.Pair;
 
 import com.pdt.grub.Grub;
+import com.pdt.grub.PLog;
 import com.pdt.grub.xposed.entry.util.FileUtils;
 import com.pdt.grub.xposed.entry.util.NativeLibraryHelperCompat;
 import com.pdt.grub.xposed.entry.util.PackageNameCache;
 import com.pdt.grub.xposed.entry.util.PluginNativeLibExtractor;
 import com.pdt.grub.xposed.entry.util.SharedPrefUtils;
-import com.pdt.grub.xposed.entry.util.XLog;
+import com.pdt.grub.PLog;
 import com.pdt.grub.xposed.entry.util.XpatchUtils;
 
 import org.lsposed.hiddenapibypass.HiddenApiBypass;
@@ -71,7 +71,7 @@ public class XposedModuleEntry {
     public static void init(Context context) {
 
         if (context == null) {
-            Log.e(TAG, "try to init XposedModuleEntry, but create app context failed !!!!");
+            PLog.e(TAG, "try to init XposedModuleEntry, but create app context failed !!!!");
             return;
         }
 
@@ -79,7 +79,7 @@ public class XposedModuleEntry {
 
         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP) {
             if (!FileUtils.isFilePermissionGranted(context)) {
-                Log.e(TAG, "File permission is not granted, can not control xposed module by file ->" +
+                PLog.e(TAG, "File permission is not granted, can not control xposed module by file ->" +
                         XPOSED_MODULE_FILE_PATH);
             }
         }
@@ -108,7 +108,7 @@ public class XposedModuleEntry {
                     packedModulePakcageNameList = new ArrayList<>();
                 }
                 String packageName = getPackageNameByPath(context, apkPath);
-                XLog.d(TAG, "Current packed module path ----> " + apkPath + " packageName = " + packageName);
+                PLog.d(TAG, "Current packed module path ----> " + apkPath + " packageName = " + packageName);
                 packedModulePakcageNameList.add(packageName);
             }
 
@@ -117,7 +117,7 @@ public class XposedModuleEntry {
             } else {
                 for (String apkPath : installedModulePathList) {
                     String packageName = getPackageNameByPath(context, apkPath);
-                    XLog.d(TAG, "Current installed module path ----> " + apkPath + " packageName = " + packageName);
+                    PLog.d(TAG, "Current installed module path ----> " + apkPath + " packageName = " + packageName);
                     if (!packedModulePakcageNameList.contains(packageName)) {
                         modulePathList.add(apkPath);
                     }
@@ -130,7 +130,7 @@ public class XposedModuleEntry {
             String dexPath = context.getDir("xposed_plugin_dex", Context.MODE_PRIVATE).getAbsolutePath();
             if (!TextUtils.isEmpty(modulePath)) {
                 String packageName = getPackageNameByPath(context, modulePath);
-                Log.d(TAG, "Current truely loaded module path ----> " + modulePath + " packageName: " + packageName);
+                PLog.d(TAG, "Current truely loaded module path ----> " + modulePath + " packageName: " + packageName);
                 String pathNameSuffix = packageName;
                 if (pathNameSuffix == null || pathNameSuffix.isEmpty()) {
                     pathNameSuffix = XpatchUtils.strMd5(modulePath);
@@ -159,7 +159,7 @@ public class XposedModuleEntry {
         // insert xposed modules saved in the lib path
     private static void insertXposedModulesFromLibPath(Context context, List<String> modulePathList) {
         String libPath = context.getApplicationInfo().nativeLibraryDir;
-        XLog.d(TAG, "Current loaded module libPath ----> " + libPath);
+        PLog.d(TAG, "Current loaded module libPath ----> " + libPath);
 
         File libFileParent = new File(libPath);
         if (!libFileParent.exists()) {
@@ -171,7 +171,7 @@ public class XposedModuleEntry {
             for (File libFile : childFileList) {
                 String fileName = libFile.getName();
                 if (fileName.startsWith(XPOSED_MODULE_FILE_NAME_PREFIX)) {
-                    XLog.d(TAG, "add xposed modules from libPath, this lib path is --> " + libFile);
+                    PLog.d(TAG, "add xposed modules from libPath, this lib path is --> " + libFile);
                     modulePathList.add(libFile.getAbsolutePath());
                 }
             }
@@ -205,7 +205,7 @@ public class XposedModuleEntry {
                 }
                 if (!TextUtils.isEmpty(apkPath) && (!configFileExist || packageNameList == null || packageNameList
                         .contains(app.packageName))) {
-                    XLog.d(TAG, " query installed module path -> " + apkPath);
+                    PLog.d(TAG, " query installed module path -> " + apkPath);
                     modulePathList.add(apkPath);
                 }
                 installedModuleList.add(Pair.create(pkg.applicationInfo.packageName, apkName));
@@ -224,7 +224,7 @@ public class XposedModuleEntry {
                 List<Pair<String, String>> addPackageList = new ArrayList<>();
                 for (Pair<String, String> packgagePair : installedModuleListFinal) {
                     if (!savedPackageNameList.contains(packgagePair.first)) {
-                        XLog.d(TAG, " addPackageList packgagePair -> " + packgagePair);
+                        PLog.d(TAG, " addPackageList packgagePair -> " + packgagePair);
                         addPackageList.add(packgagePair);
                     }
                 }
@@ -264,7 +264,7 @@ public class XposedModuleEntry {
                 if (index > 0) {
                     modulePackageName = modulePackageName.substring(0, index);
                 }
-                XLog.d(TAG, " load xposed_module.txt file result,  modulePackageName -> " + modulePackageName);
+                PLog.d(TAG, " load xposed_module.txt file result,  modulePackageName -> " + modulePackageName);
                 modulePackageList.add(modulePackageName);
             }
 

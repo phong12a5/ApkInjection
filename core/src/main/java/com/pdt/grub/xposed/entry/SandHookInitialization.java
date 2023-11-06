@@ -1,7 +1,7 @@
 package com.pdt.grub.xposed.entry;
 
 import android.content.Context;
-import android.util.Log;
+import com.pdt.grub.PLog;
 
 import com.pdt.grub.xposed.entry.util.XpatchUtils;
 
@@ -15,9 +15,9 @@ import java.lang.reflect.Method;
 public class SandHookInitialization {
 
     public static void init(Context context) {
-        Log.d("SandHookInitialization", "start init");
+        PLog.d("SandHookInitialization", "start init");
         if (context == null) {
-            Log.e("SandHookInitialization", "try to init SandHook, but app context is null !!!!");
+            PLog.e("SandHookInitialization", "try to init SandHook, but app context is null !!!!");
             return;
         }
 
@@ -85,7 +85,7 @@ public class SandHookInitialization {
             disableVMInline_method.setAccessible(true);
             disableVMInline_method.invoke(null);
         } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
-            Log.e("SandHookInitialization", " exception: ", e);
+            PLog.e("SandHookInitialization", " exception: ", e);
         }
 
         try {
@@ -93,7 +93,7 @@ public class SandHookInitialization {
             tryDisableProfile_method.setAccessible(true);
             tryDisableProfile_method.invoke(null, context.getPackageName());
         } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
-            Log.e("SandHookInitialization", " exception: ", e);
+            PLog.e("SandHookInitialization", " exception: ", e);
         }
 
         try {
@@ -101,7 +101,7 @@ public class SandHookInitialization {
             disableDex2oatInline_method.setAccessible(true);
             disableDex2oatInline_method.invoke(null, false);
         } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
-            Log.e("SandHookInitialization", " exception: ", e);
+            PLog.e("SandHookInitialization", " exception: ", e);
         }
     }
 }

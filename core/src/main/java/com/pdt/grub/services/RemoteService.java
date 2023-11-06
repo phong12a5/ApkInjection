@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.os.Parcel;
 import android.os.RemoteException;
-import android.util.Log;
+import com.pdt.grub.PLog;
 
 public class RemoteService extends Service {
     private static final String TAG = "[PDT]RemoteService";
@@ -14,13 +14,13 @@ public class RemoteService extends Service {
     private IRemoteService.Stub mBinder = new IRemoteService.Stub() {
         @Override
         public boolean call(String command, Bundle params) throws RemoteException {
-            Log.i(TAG, "IRemoteService::call(" + command + ")");
+            PLog.i(TAG, "IRemoteService::call(" + command + ")");
             return RemoteService.this.call(command, params);
         }
 
         @Override
         public byte[] callGetBytes(String command, Bundle params) throws RemoteException {
-            Log.i(TAG, "IRemoteService::callGetBytes(" + command + ")");
+            PLog.i(TAG, "IRemoteService::callGetBytes(" + command + ")");
             return RemoteService.this.callGetBytes(command, params);
         }
     };

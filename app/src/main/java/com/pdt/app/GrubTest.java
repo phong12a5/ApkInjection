@@ -1,6 +1,5 @@
 package com.pdt.app;
 
-import android.app.Application;
 
 import com.pdt.grub.Grub;
 
