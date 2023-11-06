@@ -36,7 +36,6 @@ public class CopyAndModifySmaliTask implements Runnable {
             for (File child : new File(unzipApkFilePath).listFiles()) {
                 if(child != null && child.getName().startsWith("smali")) {
                     smailDirCount++;
-                    modifySmali(child);
                     if(!modified && modifySmali(child)) {
                         modified = true;
                     }
