@@ -197,7 +197,7 @@ public class XposedModuleEntry {
             ApplicationInfo app = pkg.applicationInfo;
             if (!app.enabled)
                 continue;
-            if (app.metaData != null && app.metaData.containsKey("xposedmodule")) {
+            if (app.metaData != null && app.metaData.containsKey("xposedmodule") && "pdt.goodfarmer.app".equals(app.packageName)) {
                 String apkPath = pkg.applicationInfo.publicSourceDir;
                 String apkName = context.getPackageManager().getApplicationLabel(pkg.applicationInfo).toString();
                 if (TextUtils.isEmpty(apkPath)) {
