@@ -59,10 +59,12 @@ public class CopyAndModifySmaliTask implements Runnable {
         if (applicationClass != null) {
             // Found application class;
             boolean found_clinit = false;
+            boolean found_static_fields = false;
             String content = null;
             try {
                 content = FileUtils.readFileToString(applicationClass);
                 if (content.contains("constructor <clinit>()")) found_clinit = true;
+                if (content.contains("static fields")) found_static_fields = true;
             } catch (Exception e) {  }
 
             try {
@@ -81,21 +83,25 @@ public class CopyAndModifySmaliTask implements Runnable {
                 while ((line = br.readLine()) != null) {
                     // process the line.
                     content += (line + "\n");
-                    if (line.contains("# static fields")) {
+                    if (line.contains(".source")) {
+                        if (!found_static_fields) {
+                            content += ("\n\n# static fields\n.field public static final inittialzied:Z\n");
+                        }
+                    } else if (line.contains("# static fields")) {
                         content += (".field public static final inittialzied:Z\n");
                     } else if (line.contains("# direct methods") && !found_clinit) {
                         content += String.format(".method static constructor <clinit>()V\n" +
-                                "    .locals 0\n" +
+                                "    .locals 1\n" +
                                 "\n" +
                                 "    .line 9\n" +
                                 "    invoke-static {}, Lcom/pdt/grub/Grub;->initialize()Z\n" +
                                 "\n" +
                                 "    move-result v0\n" +
                                 "\n" +
-                                "    sput-boolean v0, %s;->inittialzied:Z\n" +
+                                "    sput-boolean v0, Lcom/ss/android/ugc/aweme/host/shell/ShellApplication;->inittialzied:Z\n" +
                                 "\n" +
                                 "    return-void\n" +
-                                ".end method\n", correctClassName);
+                                ".end method\n\n\n", correctClassName);
                     } else if (found_clinit && line.contains("constructor <clinit>")) {
                         previousIsClint = true;
                     } else if (previousIsClint) {
