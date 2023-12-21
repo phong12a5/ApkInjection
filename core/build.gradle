@@ -25,7 +25,7 @@ android {
 dependencies {
     implementation 'com.swift.sandhook:xposedcompat:4.1.0'
     implementation 'com.swift.sandhook:hooklib:4.2.0'
-//    implementation 'com.swift.sandhook:nativehook:4.2.0'
-    compileOnly 'com.swift.sandhook:hookannotation:4.2.0'
+    implementation 'com.swift.sandhook:nativehook:4.2.0'
+    provided 'com.swift.sandhook:hookannotation:4.2.0'
     implementation 'org.lsposed.hiddenapibypass:hiddenapibypass:3.0'
 }
